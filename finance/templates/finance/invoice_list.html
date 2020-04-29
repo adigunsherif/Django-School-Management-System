@@ -1,0 +1,52 @@
+{% extends 'corecode/base.html' %}
+{% load humanize %}
+
+{% block title %}invoices{% endblock title %}
+
+{% block breadcrumb %}
+<a class="btn btn-primary" href=""><i
+    class="fas fa-plus"></i> New Invoice</a>
+{% endblock breadcrumb %}
+
+{% block content %}
+  <table id="invoicetable" class="table table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th>S/N</th>
+        <th>invoice</th>
+        <th>Session-term</th>
+        <th>Total Payable</th>
+        <th>Total Paid</th>
+        <th>Balance</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for invoice in object_list %}
+        <tr class='clickable-row' data-href="{% url 'invoice-detail' invoice.id %}">
+          <td>{{ forloop.counter}}</td>
+          <td>{{ invoice}}</td>
+          <td>{{ invoice.session}}-{{ invoice.term}}</td>
+          <td>{{ invoice.total_amount_payable | intcomma }}</td>
+          <td>{{ invoice.total_amount_paid | intcomma }}</td>
+          <td>{{ invoice.balance | intcomma }}</td>
+          <td><a class="btn btn-success btn-sm"
+              href="{% url 'receipt-create' %}?invoice={{ invoice.id }}">Add new
+              receipt</a></td>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+   $('#invoicetable').DataTable({
+    select: false
+    });
+</script>
+
+{% endblock morejs %}

@@ -1,0 +1,61 @@
+{% extends 'corecode/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  {{title}}
+{% endblock title %}
+
+
+
+{% block title-side %}{% endblock title-side %}
+
+{% block content %}
+  <div class="row">
+    <div class="col">
+      <form method="POST">
+        {% csrf_token %}
+        {{ formset.management_form}}
+
+        <div class="mb-3">
+          {% for form in formset %}
+          <div class="form-group row">
+            {{ form.id }}{{ form.DELETE}}
+            <div class="col-2">{{ form.name.label_tag}}</div>
+            <div class="col-6">{{ form.name | add_class:"form-control" |add_error_class:"is-invalid" | attr:"required"}}</div>
+
+            {% if form.errors %}
+
+            {% endif %}
+
+          </div>
+          {% endfor %}
+        </div>
+
+
+        <input type="submit" value="Save" class="w-25 btn btn-primary">
+
+      </form>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-info" role="alert">
+        <h2>Warning</h2>
+        <hr>
+        Do not delete an item if it has been attached to anything in the system. Deleting an item here will delete all attached items.
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+
+
+{% block morejs %}
+  <script>
+    $(".form-group").formset(
+      {
+        "deleteText": "<div class='btn btn-danger btn-circle'><i class='fas fa-trash'></i></div>",
+        "addText":"<div class='btn btn-success btn-circle'><i class='fas fa-plus'></i></div>"
+      }
+    )
+  </script>
+{% endblock morejs %}

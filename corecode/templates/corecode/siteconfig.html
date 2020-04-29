@@ -1,0 +1,37 @@
+{% extends 'corecode/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  {{title}}
+{% endblock title %}
+
+
+
+{% block title-side %}{% endblock title-side %}
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+    {{ formset.management_form}}
+
+    <div class="mb-3">
+      {% for form in formset %}
+      <div class="form-group row">
+        {{ form.id }}
+        <div class="col-2">{{ form.key.value}}</div>
+        <div class="col-6">{{ form.value | add_class:"form-control" | attr:"required"}}</div>
+
+        {% if form.errors %}
+
+        {% endif %}
+
+      </div>
+      {% endfor %}
+    </div>
+
+
+    <input type="submit" value="Save" class="w-25 btn btn-primary">
+
+  </form>
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'corecode/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Set Current Session and Term
+{% endblock title %}
+
+
+
+{% block title-side %}{% endblock title-side %}
+
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+
+  <div class="mb-3">
+    {% for field in form %}
+    <div class="form-group row">
+      <div class="col-2">{{ field.label_tag}}</div>
+      <div class="col-6">
+        {{ field | add_class:"form-control"}}
+        <span class="small">{{ field.help_text |safe}}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  <input type="submit" value="Save" class="w-25 btn btn-primary">
+
+</form>
+
+{% endblock content %}
