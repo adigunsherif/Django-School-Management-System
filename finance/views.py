@@ -1,13 +1,39 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms import widgets
 from django.urls import reverse_lazy
 
 from .models import Invoice, InvoiceItem, Receipt
+from .forms import InvoiceItemFormset, InvoiceReceiptFormSet
 
 class InvoiceListView(ListView):
   model = Invoice
+
+
+class InvoiceCreateView(CreateView):
+    model = Invoice
+    fields = '__all__'
+    success_url = '/finance/list'
+
+    def get_context_data(self, **kwargs):
+        context = super(InvoiceCreateView, self).get_context_data(**kwargs)
+        if self.request.POST:
+            context['items'] = InvoiceItemFormset(
+                self.request.POST, prefix='invoiceitem_set')
+        else:
+            context['items'] = InvoiceItemFormset(prefix='invoiceitem_set')
+        return context
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        formset = context['items']
+        self.object = form.save()
+        if self.object.id != None:
+            if form.is_valid() and formset.is_valid():
+                formset.instance = self.object
+                formset.save()
+        return super().form_valid(form)
 
 
 class InvoiceDetailView(DetailView):
@@ -31,11 +57,11 @@ class InvoiceUpdateView(UpdateView):
         if self.request.POST:
           context['receipts'] = InvoiceReceiptFormSet(
               self.request.POST, instance=self.object)
-          context['items'] = InvoiceItemFormsetUpdate(
+          context['items'] = InvoiceItemFormset(
               self.request.POST, instance=self.object)
         else:
           context['receipts'] = InvoiceReceiptFormSet(instance=self.object)
-          context['items'] = InvoiceItemFormsetUpdate(instance=self.object)
+          context['items'] = InvoiceItemFormset(instance=self.object)
         return context
 
     def form_valid(self, form):

@@ -20,6 +20,7 @@ class Invoice(models.Model):
   def __str__(self):
     return f'{self.student}'
 
+
   def balance(self):
     payable = self.total_amount_payable()
     paid = self.total_amount_paid()

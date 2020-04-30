@@ -83,7 +83,7 @@ def subject_view(request):
   else:
     form = SubjectForm(queryset=Subject.objects.all())
 
-  context = {"formset": form, "title": "Classes"}
+  context = {"formset": form, "title": "Subjects"}
   return render(request, 'corecode/mgt_form.html', context)
 
 def current_session_view(request):

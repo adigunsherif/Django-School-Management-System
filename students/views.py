@@ -6,6 +6,7 @@ from django.forms import widgets
 from django.urls import reverse_lazy
 
 from .models import Student, StudentBulkUpload
+from finance.models import Invoice
 
 def student_list(request):
   students = Student.objects.all()
@@ -18,7 +19,7 @@ class StudentDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(StudentDetailView, self).get_context_data(**kwargs)
-        #context['payments'] = Invoice.objects.filter(student=self.object)
+        context['payments'] = Invoice.objects.filter(student=self.object)
         return context
 
 
