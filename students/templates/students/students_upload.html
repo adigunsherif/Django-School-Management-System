@@ -1,0 +1,16 @@
+{% extends 'corecode/base.html' %}
+
+
+{% block title %}
+  Upload Bulk Students from file
+{% endblock title %}
+
+
+{% block content %}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include 'corecode/form_snippet.html' %}
+
+    <input type="submit" class="btn btn-success" value="Submit">
+  </form>
+{% endblock content %}

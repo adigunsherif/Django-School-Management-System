@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import student_list, StudentDeleteView, StudentDetailView, StudentUpdateView, StudentCreateView
+from .views import student_list, StudentDeleteView, StudentDetailView, StudentUpdateView, StudentCreateView, StudentBulkUploadView
 
 urlpatterns = [
   path('list', student_list, name='student-list'),
@@ -9,6 +9,6 @@ urlpatterns = [
   path('<int:pk>/update/', StudentUpdateView.as_view(), name='student-update'),
   path('delete/<int:pk>/', StudentDeleteView.as_view(), name='student-delete'),
 
-  #path('upload/', student_bulk_upload, name='student-upload'),
+  path('upload/', StudentBulkUploadView.as_view(), name='student-upload'),
 
 ]

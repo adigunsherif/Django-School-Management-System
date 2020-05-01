@@ -42,5 +42,5 @@ class Student(models.Model):
 
 class StudentBulkUpload(models.Model):
   date_uploaded = models.DateTimeField(auto_now=True)
-  csv_file = models.FileField(upload_to='bulkupload/student/')
+  csv_file = models.FileField(upload_to='students/bulkupload/')
   current_class = models.ForeignKey(StudentClass, on_delete=models.CASCADE)

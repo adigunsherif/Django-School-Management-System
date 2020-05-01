@@ -58,3 +58,11 @@ class StudentUpdateView(SuccessMessageMixin, UpdateView):
 class StudentDeleteView(DeleteView):
     model = Student
     success_url = reverse_lazy('student-list')
+
+
+class StudentBulkUploadView(SuccessMessageMixin, CreateView):
+    model = StudentBulkUpload
+    template_name = 'students/students_upload.html'
+    fields = ['current_class', 'csv_file']
+    success_url = '/student/list'
+    success_message = 'Successfully uploaded students'

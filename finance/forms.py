@@ -9,3 +9,5 @@ InvoiceItemFormset = inlineformset_factory(
 InvoiceReceiptFormSet = inlineformset_factory(
     Invoice, Receipt, fields=('amount_paid', 'date_paid', 'comment'), extra=0, can_delete=True
 )
+
+Invoices = modelformset_factory(Invoice, exclude=(), extra=4)

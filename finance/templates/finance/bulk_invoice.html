@@ -1,0 +1,18 @@
+
+{% extends 'corecode/base.html' %}
+
+
+{% block title %}
+{% endblock title %}
+
+
+{% block content %}
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="submit" class="btn btn-success">
+</form>
+
+
+{% endblock content %}

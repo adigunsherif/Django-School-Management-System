@@ -4,8 +4,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms import widgets
 from django.urls import reverse_lazy
 
+from students.models import Student
 from .models import Invoice, InvoiceItem, Receipt
-from .forms import InvoiceItemFormset, InvoiceReceiptFormSet
+from .forms import InvoiceItemFormset, InvoiceReceiptFormSet, Invoices
 
 class InvoiceListView(ListView):
   model = Invoice
@@ -110,3 +111,15 @@ class ReceiptDeleteView(DeleteView):
     model = Receipt
     success_url = reverse_lazy('invoice-list')
 
+
+def bulk_invoice(request):
+    students = Student.objects.all()
+    initial = []
+    for student in students:
+        initial.append({"student":student, "class_for": student.current_class})
+    if request.method == 'POST':
+        pass
+    else:
+        form = Invoices(initial=initial)
+
+    return render(request, 'finance/bulk_invoice.html', {"form": form})
