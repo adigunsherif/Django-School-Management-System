@@ -7,30 +7,17 @@
 
 
 {% block content %}
-  <div class="row">
-    <div class="col">
-      <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% include 'corecode/form_snippet.html' %}
 
-        <input type="submit" class="btn btn-success" value="Submit">
-      </form>
-    </div>
-
-    <div class="col alert alert-info">
-      <h5>Instruction</h5>
-      <p>Please upload a csv file with the following columns</p>
-      <ul>
-        <li>registration_number </li>
-        <li>surname </li>
-        <li>firstname </li>
-        <li>other_names </li>
-        <li>gender </li>
-        <li>parent_number </li>
-        <li>address </li>
-      </ul>
-      <p>Please note that the headers must be written exactly as they appear here</p>
-    </div>
+  <div class="col alert alert-info">
+    <h5>Instruction</h5>
+    <p>Please <a href="{% url 'download-csv' %}">download the CSV file attached here</a>. Fill in the sheet and upload the same file back to this page. DO NOT EDIT THE FIRST ROW</p>
   </div>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include 'corecode/form_snippet.html' %}
+
+    <input type="submit" class="btn btn-success" value="Submit">
+  </form>
 
 {% endblock content %}

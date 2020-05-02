@@ -1,3 +1,5 @@
+import csv
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import DetailView
@@ -63,6 +65,17 @@ class StudentDeleteView(DeleteView):
 class StudentBulkUploadView(SuccessMessageMixin, CreateView):
     model = StudentBulkUpload
     template_name = 'students/students_upload.html'
-    fields = ['current_class', 'csv_file']
+    fields = ['csv_file']
     success_url = '/student/list'
     success_message = 'Successfully uploaded students'
+
+
+def downloadcsv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="student_template.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['registration_number', 'surname',
+                     'firstname', 'other_names', 'gender', 'parent_number', 'address', 'current_class'])
+
+    return response

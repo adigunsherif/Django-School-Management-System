@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
-from corecode.models import StudentClass
+from corecode.models import StudentClass, Subject
 
 class Student(models.Model):
   STATUS = [
@@ -43,4 +43,3 @@ class Student(models.Model):
 class StudentBulkUpload(models.Model):
   date_uploaded = models.DateTimeField(auto_now=True)
   csv_file = models.FileField(upload_to='students/bulkupload/')
-  current_class = models.ForeignKey(StudentClass, on_delete=models.CASCADE)

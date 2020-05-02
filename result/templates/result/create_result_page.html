@@ -1,0 +1,17 @@
+{% extends 'corecode/base.html' %}
+
+
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+
+    {% for form in formset %}
+      {{ form }}
+    {% endfor %}
+
+
+    <input type="submit" class="btn btn-success" value="Create">
+  </form>
+
+{% endblock content %}

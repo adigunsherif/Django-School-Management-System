@@ -19,8 +19,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date_uploaded', models.DateTimeField(auto_now=True)),
-                ('csv_file', models.FileField(upload_to='bulkupload/student/')),
-                ('current_class', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='corecode.StudentClass')),
+                ('csv_file', models.FileField(upload_to='students/bulkupload/')),
             ],
         ),
         migrations.CreateModel(
