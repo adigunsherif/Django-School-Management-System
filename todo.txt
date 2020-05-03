@@ -1,3 +1,4 @@
 workon the config page
 check all forms.html
 work on student bulk upload
+https://datatables.net/manual/
