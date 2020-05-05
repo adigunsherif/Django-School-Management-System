@@ -54,6 +54,7 @@ class StudentUpdateView(SuccessMessageMixin, UpdateView):
                                                                     'type': 'date'})
         form.fields['address'].widget = widgets.Textarea(attrs={'rows': 2})
         form.fields['others'].widget = widgets.Textarea(attrs={'rows': 2})
+       # form.fields['passport'].widget = widgets.FileInput()
         return form
 
 

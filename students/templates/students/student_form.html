@@ -14,7 +14,7 @@
 
 {% block content %}
 
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
 
   {% include 'corecode/form_snippet.html' %}

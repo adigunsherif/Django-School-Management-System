@@ -22,10 +22,10 @@
 
 {% block content %}
 
-  <table id="studenttable" class="table table-sm table-bordered">
+  <table id="studenttable" class="table table-sm table-bordered" data-page-length='100'>
     <thead class="thead-light">
       <tr>
-        <th></th>
+        <th><input type="checkbox" id="selecter"></th>
         <th>Name</th>
         <th>Current Class</th>
       </tr>
@@ -51,6 +51,16 @@
 {% block morejs %}
 <script>
   $('#studenttable').DataTable({
+    "ordering": false
+  });
+
+  $("#selecter").change(function () {
+    if (this.checked) {
+      $('input[name="students"]').prop('checked', true);
+    }
+    else {
+      $('input[name="students"]').prop('checked', false);
+    }
   });
 </script>
 

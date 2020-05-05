@@ -1,6 +1,5 @@
 from .models import AcademicTerm, AcademicSession
 
-
 class SiteWideConfigs:
     def __init__(self, get_response):
         self.get_response = get_response
@@ -9,8 +8,8 @@ class SiteWideConfigs:
       current_session = AcademicSession.objects.get(current=1)
       current_term = AcademicTerm.objects.get(current=1)
 
-      request.current_session = current_session.name
-      request.current_term = current_term.name
+      request.current_session = current_session
+      request.current_term = current_term
 
       response = self.get_response(request)
 

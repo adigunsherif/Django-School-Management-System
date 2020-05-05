@@ -29,9 +29,10 @@ class Student(models.Model):
   parent_mobile_number = models.CharField(max_length=15, blank=True)
   address = models.TextField(blank=True)
   others = models.TextField(blank=True)
+  passport = models.ImageField(blank=True, upload_to='students/passports/')
 
   class Meta:
-    ordering = ['registration_number']
+    ordering = ['surname', 'firstname', 'other_name']
 
   def __str__(self):
     return f'{self.surname} {self.firstname} {self.other_name} ({self.registration_number})'

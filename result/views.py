@@ -41,9 +41,9 @@ def create_result(request):
     #after choosing students
     id_list = request.POST.getlist('students')
     if id_list:
-      form = CreateResults()
+      form = CreateResults(initial={"session": request.current_session, "term":request.current_term})
       studentlist = ','.join(id_list)
-      return render(request, 'result/create_result_page2.html', {"students": studentlist, "form": form})
+      return render(request, 'result/create_result_page2.html', {"students": studentlist, "form": form, "count":len(id_list)})
     else:
       messages.warning(request, "You didnt select any student.")
   return render(request, 'result/create_result.html', {"students": students})
@@ -52,12 +52,41 @@ def create_result(request):
 def edit_results(request):
   if request.method == 'POST':
     form = EditResults(request.POST)
-    print(form.errors)
     if form.is_valid():
-      print(form.errors)
       form.save()
       messages.success(request, 'Results successfully updated')
       return redirect('edit-results')
   else:
-    form = EditResults()
+    results = Result.objects.filter(
+        session=request.current_session, term=request.current_term)
+    form = EditResults(queryset=results)
   return render(request, 'result/edit_results.html', {"formset": form})
+
+
+def all_results_view(request):
+  results = Result.objects.filter(
+      session=request.current_session, term=request.current_term)
+  bulk = {}
+
+  for result in results:
+    test_total = 0
+    exam_total = 0
+    subjects = []
+    for subject in results:
+      if subject.student == result.student:
+        subjects.append(subject)
+        test_total += subject.test_score
+        exam_total += subject.exam_score
+
+    bulk[result.student.id] = {
+      "student": result.student,
+      "subjects": subjects,
+      "test_total": test_total,
+      "exam_total": exam_total,
+      "total_total": test_total + exam_total
+    }
+
+  context = {
+      "results": bulk
+  }
+  return render(request, 'result/all_results.html', context)

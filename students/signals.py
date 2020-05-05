@@ -27,7 +27,7 @@ def create_bulk_student(sender, created, instance, *args, **kwargs):
         if current_class:
           theclass, kind = StudentClass.objects.get_or_create(name=current_class)
 
-        check = Student.objects.filter(registration_number=reg)
+        check = Student.objects.filter(registration_number=reg).exists()
         if not check:
           students.append(
             Student(
@@ -47,9 +47,19 @@ def create_bulk_student(sender, created, instance, *args, **kwargs):
     instance.csv_file.close()
     instance.delete()
 
-@receiver(post_delete, sender=StudentBulkUpload)
-def delete_file(sender, instance, *args, **kwargs):
-  if instance.csv_file:
-    if os.path.isfile(instance.csv_file.path):
-        os.remove(instance.csv_file.path)
 
+def _delete_file(path):
+   """ Deletes file from filesystem. """
+   if os.path.isfile(path):
+       os.remove(path)
+
+@receiver(post_delete, sender=StudentBulkUpload)
+def delete_csv_file(sender, instance, *args, **kwargs):
+  if instance.csv_file:
+    _delete_file(instance.csv_file.path)
+
+
+@receiver(post_delete, sender=Student)
+def delete_passport_on_delete(sender, instance, *args, **kwargs):
+  if instance.passport:
+    _delete_file(instance.passport.path)

@@ -11,27 +11,31 @@ Update Results
   {% csrf_token %}
   {{ formset.management_form}}
 
-  <table class="table table-sm">
+  <table id="studenttable" class="table table-sm">
     <thead>
       <tr>
+        <th></th>
         <th>Name</th>
         <th>Subject</th>
         <th>Test Score</th>
         <th>Exam Score</th>
         <th>Total</th>
         <th>Delete</th>
+        <th>Class</th>
       </tr>
     </thead>
     <tbody>
       {% for form in formset %}
       {{ form.id}}
         <tr>
+          <td>{{forloop.counter }}</td>
           <td>{{form.instance.student }}</td>
           <td>{{form.instance.subject}}</td>
           <td style="width: 10%;">{{form.test_score | add_class:"form-control form-control-sm"}}</td>
           <td style="width: 10%;">{{form.exam_score | add_class:"form-control form-control-sm"}}</td>
           <td>{{form.instance.total_score}}</td>
           <td>{{form.DELETE}}</td>
+          <td>{{form.instance.current_class}}</td>
 
         </tr>
       {% endfor %}

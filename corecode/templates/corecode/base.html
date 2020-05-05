@@ -131,6 +131,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{% url 'view-results' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  View Results
+                </p>
+              </a>
+            </li>
 
             <li class="nav-header">Others</li>
             <li class="nav-item has-treeview">
@@ -215,6 +223,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
+              {% block fullcard %}
               <div class="card">
                 {% block content-header %}{% endblock content-header %}
                 <div class="card-body">
@@ -230,6 +239,7 @@
                 <!-- ./card-body -->
 
               </div>
+              {% endblock fullcard %}
               <!-- /.card -->
             </div>
             <!-- /.col -->

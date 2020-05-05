@@ -2,7 +2,16 @@
 {% load widget_tweaks %}
 
 
+{% block title %}
+  Select all the subjects you want to create
+{% endblock title %}
+
+
 {% block content %}
+
+
+  <p>You selected <b>{{ count }} students</b> from the previous page.</p>
+
   <form method="POST">
     {% csrf_token %}
 

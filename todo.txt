@@ -1,4 +1,5 @@
+add system log
 workon the config page
 check all forms.html
-work on student bulk upload
 https://datatables.net/manual/
+add js to select all checkboxes at once
