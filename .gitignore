@@ -3,6 +3,7 @@
 # Edit at https://www.gitignore.io/?templates=django,python,windows
 
 ### Django ###
+.env
 *.log
 *.pot
 *.pyc
@@ -194,4 +195,3 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/django,python,windows
 
-.env
