@@ -18,11 +18,12 @@ git clone https://github.com/adigunsherif/Django-School-Management-System.git
 Then
 
 ```bash
-cd newapp
+cd Django-School-Management-System
 ```
 Run
 
 ```python
+pip install -r requirements.txt #install required packages
 python manange.py migrate # run first migration
 python manange.py runserver # run the server
 ```
