@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'widget_tweaks',
-    'app_users',
     'corecode',
     'students',
     'staffs',
@@ -141,4 +140,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
+<<<<<<< HEAD
 django_heroku.settings(locals(), logging=False)
+=======
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
+
+>>>>>>> master

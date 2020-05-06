@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('corecode.urls')),
     path('student/', include('students.urls')),
     path('staff/', include('staffs.urls')),

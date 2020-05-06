@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, HttpResponseRedirect, redirect
 
@@ -7,7 +8,7 @@ from students.models import Student
 from .models import Result
 from .forms import CreateResults, EditResults
 
-
+@login_required
 def create_result(request):
   students = Student.objects.all()
   if request.method == 'POST':
@@ -48,7 +49,7 @@ def create_result(request):
       messages.warning(request, "You didnt select any student.")
   return render(request, 'result/create_result.html', {"students": students})
 
-
+@login_required
 def edit_results(request):
   if request.method == 'POST':
     form = EditResults(request.POST)
@@ -62,7 +63,7 @@ def edit_results(request):
     form = EditResults(queryset=results)
   return render(request, 'result/edit_results.html', {"formset": form})
 
-
+@login_required
 def all_results_view(request):
   results = Result.objects.filter(
       session=request.current_session, term=request.current_term)
