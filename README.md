@@ -10,7 +10,17 @@ It currently doesn't allow students/staff to login.
 Solely, it's expected to be used on a single machine or online for managers only.
 
 ## Usage
-It's best to install Python projects in a Virtual Enviroment
+It's best to install Python projects in a Virtual Enviroment. Once you have set up a VE, clone this project
+
+```bash
+git clone https://github.com/adigunsherif/Django-School-Management-System.git
+```
+Then
+
+```bash
+cd newapp
+```
+Run
 
 ```python
 python manange.py migrate # run first migration
@@ -29,4 +39,4 @@ Please make sure to update tests as appropriate.
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## actively under development
+## Actively under development
