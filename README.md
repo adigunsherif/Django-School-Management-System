@@ -9,6 +9,9 @@ finances.
 It currently doesn't allow students/staff to login.
 Solely, it's expected to be used on a single machine or online for managers only.
 
+## Demo
+Visit https://django-school-app.herokuapp.com/ for a live demo. The demo is updated whenever the demo branch code is updated.
+
 ## Usage
 It's best to install Python projects in a Virtual Enviroment. Once you have set up a VE, clone this project
 
