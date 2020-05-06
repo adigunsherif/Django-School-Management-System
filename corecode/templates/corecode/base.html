@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>{{ sitename | default:"MySchool" }}</title>
+  <title>{{ school_name | default:"MySchool" }}</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
@@ -63,7 +63,7 @@
               <i class="fas fa-user mr-2"></i> Profile
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <a href="{% url 'logout' %}" class="dropdown-item">
               <i class="fas fa-sign-out"></i> Sign out
             </a>
           </div>

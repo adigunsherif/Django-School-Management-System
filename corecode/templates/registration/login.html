@@ -1,0 +1,101 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>{{ school_name | default:"MySchool" }}</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet"
+    href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet"
+    href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+    rel="stylesheet">
+</head>
+
+<body class="hold-transition login-page">
+
+  <div class="login-box">
+    <div class="login-logo">
+      <a href=""><b>{{ school_name }}</b></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body text-center">
+        <p class="login-box-msg">Sign in to start your session</p>
+
+        {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+        {% endif %}
+
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <table>
+            <tr class="mb-2">
+              <td>{{ form.username.label_tag }}</td>
+              <td>{{ form.username | add_class:"form-control" }}</td>
+            </tr>
+            <tr class="mb-2">
+              <td>{{ form.password.label_tag }}</td>
+              <td>{{ form.password | add_class:"form-control"}}</td>
+            </tr>
+          </table>
+
+          <input type="submit" value="Login" class="btn btn-primary mt-2">
+          <input type="hidden" name="next" value="{{ next }}">
+        </form>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'dist/js/jquery.formset.js' %}"> </script>
+  <!-- Bootstrap -->
+  <script
+    src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
+  <!-- overlayScrollbars -->
+  <script
+    src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+
+  <!-- AdminLTE App -->
+  <script src="{% static 'dist/js/adminlte.js' %}"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <script src="{% static 'dist/js/demo.js' %}"></script>
+
+  {% if messages %}
+  {% for message in messages %}
+  <script type=text/javascript>
+      toastr.options.progressBar = true;
+      toastr.{{ message.tags }}('{{ message }}')
+    </script>
+  {% endfor %}
+  {% endif %}
+
+</body>

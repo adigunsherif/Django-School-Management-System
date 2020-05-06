@@ -32,6 +32,13 @@ python manange.py runserver # run the server
 ```
 Then locate http://172.0.0.1:8000
 
+## Admin Login
+When you run migrate, a superuser is created.
+```bash
+username: admin
+password: admin123
+```
+
 ## Roadmap
 To build a fully fledge open source school management for administrative use only.
 

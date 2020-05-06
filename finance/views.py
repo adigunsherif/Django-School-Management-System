@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -8,11 +10,11 @@ from students.models import Student
 from .models import Invoice, InvoiceItem, Receipt
 from .forms import InvoiceItemFormset, InvoiceReceiptFormSet, Invoices
 
-class InvoiceListView(ListView):
+class InvoiceListView(LoginRequiredMixin, ListView):
   model = Invoice
 
 
-class InvoiceCreateView(CreateView):
+class InvoiceCreateView(LoginRequiredMixin, CreateView):
     model = Invoice
     fields = '__all__'
     success_url = '/finance/list'
@@ -37,7 +39,7 @@ class InvoiceCreateView(CreateView):
         return super().form_valid(form)
 
 
-class InvoiceDetailView(DetailView):
+class InvoiceDetailView(LoginRequiredMixin, DetailView):
     model = Invoice
     fields = '__all__'
 
@@ -48,7 +50,7 @@ class InvoiceDetailView(DetailView):
         return context
 
 
-class InvoiceUpdateView(UpdateView):
+class InvoiceUpdateView(LoginRequiredMixin, UpdateView):
     model = Invoice
     fields = ['student', 'session', 'term',
               'class_for', 'balance_from_previous_term']
@@ -77,12 +79,12 @@ class InvoiceUpdateView(UpdateView):
 
 
 
-class InvoiceDeleteView(DeleteView):
+class InvoiceDeleteView(LoginRequiredMixin, DeleteView):
     model = Invoice
     success_url = reverse_lazy('invoice-list')
 
 
-class ReceiptCreateView(CreateView):
+class ReceiptCreateView(LoginRequiredMixin, CreateView):
     model = Receipt
     fields = ['amount_paid', 'date_paid', 'comment']
     success_url = reverse_lazy('invoice-list')
@@ -101,17 +103,17 @@ class ReceiptCreateView(CreateView):
         return context
 
 
-class ReceiptUpdateView(UpdateView):
+class ReceiptUpdateView(LoginRequiredMixin, UpdateView):
     model = Receipt
     fields = ['amount_paid', 'date_paid', 'comment']
     success_url = reverse_lazy('invoice-list')
 
 
-class ReceiptDeleteView(DeleteView):
+class ReceiptDeleteView(LoginRequiredMixin, DeleteView):
     model = Receipt
     success_url = reverse_lazy('invoice-list')
 
-
+@login_required
 def bulk_invoice(request):
     students = Student.objects.all()
     initial = []

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import messages
 
@@ -5,9 +6,11 @@ from .models import SiteConfig, AcademicSession, AcademicTerm, StudentClass, Sub
 from .forms import SiteConfigForm, AcademicTermForm, AcademicSessionForm, StudentClassForm, SubjectForm, CurrentSessionForm
 
 # Create your views here.
+@login_required
 def index_view(request):
   return render(request, 'corecode/index.html')
 
+@login_required
 def siteconfig_view(request):
   """ Site Config View """
   if request.method == 'POST':
@@ -23,7 +26,7 @@ def siteconfig_view(request):
   context = {"formset": form, "title": "Configuration"}
   return render(request, 'corecode/siteconfig.html', context)
 
-
+@login_required
 def academic_terms_view(request):
   """ Academic Terms View """
   if request.method == 'POST':
@@ -38,7 +41,7 @@ def academic_terms_view(request):
   context = {"formset": form, "title": "Terms"}
   return render(request, 'corecode/mgt_form.html', context)
 
-
+@login_required
 def academic_sessions_view(request):
   """ Academic Sessions View """
   if request.method == 'POST':
@@ -53,7 +56,7 @@ def academic_sessions_view(request):
   context = {"formset": form, "title": "Sessions"}
   return render(request, 'corecode/mgt_form.html', context)
 
-
+@login_required
 def student_classes_view(request):
   """ Classes View """
   if request.method == 'POST':
@@ -69,7 +72,7 @@ def student_classes_view(request):
   context = {"formset": form, "title": "Classes"}
   return render(request, 'corecode/mgt_form.html', context)
 
-
+@login_required
 def subject_view(request):
   """ Subject View """
   if request.method == 'POST':
@@ -86,6 +89,7 @@ def subject_view(request):
   context = {"formset": form, "title": "Subjects"}
   return render(request, 'corecode/mgt_form.html', context)
 
+@login_required
 def current_session_view(request):
   """ Current SEssion and Term """
   if request.method == 'POST':
@@ -107,6 +111,7 @@ def current_session_view(request):
 
   return render(request, 'corecode/current_session.html', {"form":form})
 
+@login_required
 def developer(request):
   """ Developer """
   return render(request, 'corecode/developer.html')
