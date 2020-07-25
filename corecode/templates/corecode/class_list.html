@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="row">
+    <div class="col s12 m8 offset-m2">
+      <h5 class="center">Classes</h5>
+      <table>
+        <tbody>
+          {% for object in object_list %}
+          <tr>
+            <td>{{ object }}</td>
+            <td>{{ object.get_category_display }}</td>
+            <td><a href="{% url 'class-update' object.id %}"><i class="material-icons">edit</i></a> <a href="{% url 'class-delete' object.id %}"><i
+                class="material-icons">delete_forever</i></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  {% if user.user_role == 'admin' %}
+  <!-- Floating -->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red modal-trigger" href="#modal1">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h5>Add new class</h5>
+      <div class="divider"></div>
+      <form action="{% url 'class-create' %}" method="POST">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="input-field">
+              {{ field }}
+              {{ field.label_tag }}
+              <span class="red-text helper-text" data-error="wrong" data-success="right">
+                {% for error in field.errors %}{{ error}}{% endfor %}
+              </span>
+            </div>
+        {% endfor %}
+
+
+        <input type="submit" class="mt-2 btn" value="Save">
+        <button type="button" class="mt-2 modal-close waves-effect btn">Cancel</button>
+      </form>
+    </div>
+  </div>
+  {% endif %}
+
+{% endblock content %}
