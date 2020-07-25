@@ -13,7 +13,7 @@ from .forms import SiteConfigForm, AcademicTermForm, AcademicSessionForm, Studen
 # Create your views here.
 @login_required
 def index_view(request):
-  return render(request, 'corecode/index.html')
+  return render(request, 'index.html')
 
 @login_required
 def siteconfig_view(request):
@@ -189,7 +189,7 @@ class SubjectListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
 
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
-      context['form'] = StudentClassForm()
+      context['form'] = SubjectForm()
       return context
 
 
@@ -248,4 +248,4 @@ def current_session_view(request):
 @login_required
 def developer(request):
   """ Developer """
-  return render(request, 'corecode/developer.html')
+  return render(request, 'developer.html')

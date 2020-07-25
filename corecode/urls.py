@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
   path('', views.index_view, name='home'),
   path('site-config', views.siteconfig_view, name='configs'),
+  path('current-session/', views.current_session_view, name='current-session'),
+  path('developer/', views.developer, name='developer'),
 
   path('session/list/', views.SessionListView.as_view(), name='sessions'),
   path('session/create/', views.SessionCreateView.as_view(), name='session-create'),
@@ -35,6 +37,4 @@ urlpatterns = [
   path('subject/<int:pk>/delete/',
        views.SubjectDeleteView.as_view(), name='subject-delete'),
 
-  path('current-session/', views.current_session_view, name='current-session'),
-  path('developer/', views.developer, name='developer'),
 ]

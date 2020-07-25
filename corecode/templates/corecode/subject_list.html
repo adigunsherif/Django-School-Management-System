@@ -48,7 +48,6 @@ Subjects
             </button>
           </div>
           <div class="modal-body">
-            
               {% csrf_token %}
 
               {% for field in form %}
@@ -57,7 +56,6 @@ Subjects
                     {{ field|add_class:"form-control" }}
                   </div>
               {% endfor %}
-            
           </div>
 
           <div class="modal-footer">
