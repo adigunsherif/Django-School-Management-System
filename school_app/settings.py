@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dotenv
-import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -88,12 +88,12 @@ WSGI_APPLICATION = 'school_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASE_URL = os.environ['DATABASE_URL']
+
+DATABASES = {}
+
+DATABASES['default'] = dj_database_url.config(default=DATABASE_URL,
+    conn_max_age=600)
 
 
 # Password validation
@@ -143,6 +143,3 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
-
-
-django_heroku.settings(locals(), logging=False)
