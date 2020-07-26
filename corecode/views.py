@@ -48,6 +48,11 @@ class SessionCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
   success_url = reverse_lazy('sessions')
   success_message = 'New session successfully added'
 
+  def get_context_data(self, **kwargs):
+      context = super().get_context_data(**kwargs)
+      context['title'] = 'Add new session'
+      return context
+
 
 
 class SessionUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

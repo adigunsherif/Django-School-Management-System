@@ -19,7 +19,7 @@ Add new invoice
   {% csrf_token %}
 
   <div class="row">
-    <div class="col">
+    <div class="col-sm-6">
       {% for field in form %}
       <div class="form-group row">
         <label class="col col-form-label" for="{{ field.auto_id }}">
@@ -37,7 +37,7 @@ Add new invoice
       </div>
       {% endfor %}
     </div>
-    <div class="col callout callout-info">
+    <div class="col-sm-6 callout callout-info">
       {{ items.management_form }}
       <div class="text-center">FEE STRUCTURE</div>
       <div class="row">
