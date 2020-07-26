@@ -16,7 +16,7 @@ class SiteConfig(models.Model):
 class AcademicSession(models.Model):
   """ Academic Session """
   name = models.CharField(max_length=200, unique=True)
-  current = models.BooleanField()
+  current = models.BooleanField(default=False, null=True)
 
   class Meta:
     ordering = ['-name']
@@ -28,7 +28,7 @@ class AcademicSession(models.Model):
 class AcademicTerm(models.Model):
   """ Academic Term """
   name = models.CharField(max_length=20, unique=True)
-  current = models.BooleanField()
+  current = models.BooleanField(default=False, null=True)
 
   class Meta:
     ordering = ['name']
