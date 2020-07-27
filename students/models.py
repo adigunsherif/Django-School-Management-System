@@ -26,7 +26,7 @@ class Student(models.Model):
   current_class         = models.ForeignKey(StudentClass, on_delete=models.SET_NULL, blank=True, null=True)
   date_of_admission     = models.DateField(default=timezone.now)
 
-  mobile_num_regex      = RegexValidator(regex="^[0-9]{10,12}$", message="Entered mobile number isn't in a right format!")
+  mobile_num_regex      = RegexValidator(regex="^[0-9]{10,15}$", message="Entered mobile number isn't in a right format!")
   parent_mobile_number  = models.CharField(validators=[mobile_num_regex], max_length=13, blank=True)
 
   address               = models.TextField(blank=True)
