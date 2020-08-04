@@ -115,13 +115,4 @@ class ReceiptDeleteView(LoginRequiredMixin, DeleteView):
 
 @login_required
 def bulk_invoice(request):
-    students = Student.objects.all()
-    initial = []
-    for student in students:
-        initial.append({"student":student, "class_for": student.current_class})
-    if request.method == 'POST':
-        pass
-    else:
-        form = Invoices(initial=initial)
-
-    return render(request, 'finance/bulk_invoice.html', {"form": form})
+    return render(request, 'finance/bulk_invoice.html')
