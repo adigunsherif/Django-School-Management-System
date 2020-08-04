@@ -17,7 +17,7 @@ password: admin123
 ```
 
 ## Usage
-It's best to install Python projects in a Virtual Enviroment. Once you have set up a VE, clone this project
+It's best to install Python projects in a Virtual Environment. Once you have set up a VE, clone this project
 
 ```bash
 git clone https://github.com/adigunsherif/Django-School-Management-System.git
@@ -44,7 +44,7 @@ password: admin123
 ```
 
 ## Roadmap
-To build a fully fledge open source school management for administrative use only.
+To build a fully fledged open source school management for administrative use only.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
