@@ -1,5 +1,4 @@
 add system log
 workon the config page
 check all forms.html
-https://datatables.net/manual/
-add js to select all checkboxes at once
+work on bulk upload of invoices from excel
