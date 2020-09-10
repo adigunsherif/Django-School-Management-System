@@ -31,8 +31,8 @@ Run
 
 ```python
 pip install -r requirements.txt #install required packages
-python manange.py migrate # run first migration
-python manange.py runserver # run the server
+python manage.py migrate # run first migration
+python manage.py runserver # run the server
 ```
 Then locate http://172.0.0.1:8000
 
