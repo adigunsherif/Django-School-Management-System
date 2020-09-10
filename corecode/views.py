@@ -249,8 +249,3 @@ def current_session_view(request):
 
 
   return render(request, 'corecode/current_session.html', {"form":form})
-
-@login_required
-def developer(request):
-  """ Developer """
-  return render(request, 'developer.html')
