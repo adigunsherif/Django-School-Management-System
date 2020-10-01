@@ -16,6 +16,10 @@ media
 # in your Git repository. Update and uncomment the following line accordingly.
 staticfiles/
 
+
+#previous login page
+templates/registration/login14.html
+
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
 *.py[cod]
