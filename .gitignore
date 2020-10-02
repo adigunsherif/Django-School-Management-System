@@ -17,8 +17,7 @@ media
 staticfiles/
 
 
-#previous login page
-templates/registration/login14.html
+
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files

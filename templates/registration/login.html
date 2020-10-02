@@ -10,13 +10,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>{{ school_name | default:"MySchool" }}</title>
-  <!--Boot strap -->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet"
     href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
   <link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet"
@@ -37,8 +35,8 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-pic js-tilt">
-                <img src="{% static 'dist/img/login.jpg' %}">
+            <div class="login100-pic js-tilt" style="width: 400px;">
+                <img src="{% static 'dist/img/login.png' %}">
             </div>
 
             <form class="login100-form validate-form" method="post" action="{% url 'login' %}">
@@ -57,7 +55,7 @@
                       please login with an account that has access.</p>
                     {% else %}
                     </span>
-                    <p>Please login to see this page.</p>
+                    <p>Please Login to see this page.</p>
                     {% endif %}
                     {% endif %}
                 </span>
@@ -99,8 +97,7 @@
                 <div class="text-center p-t-136">
                     <a class="txt2" href="#">
                         Create your Account
-                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                    </a>
+                      <i class="fas fa-arrow-right"></i></a>
                 </div>
             </form>
         </div>
