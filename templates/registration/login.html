@@ -10,66 +10,94 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>{{ school_name | default:"MySchool" }}</title>
-
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet"
     href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
   <link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet"
     href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+
+  <!--Login Page Csss-->
+  <link rel="stylesheet" href="{% static 'dist/css/login-page.css' %}">
+
   <!-- Google Font: Source Sans Pro -->
   <link
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
     rel="stylesheet">
 </head>
+<body>
 
-<body class="hold-transition login-page">
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" style="width: 400px;">
+                <img src="{% static 'dist/img/login.png' %}">
+            </div>
 
-  <div class="login-box">
-    <div class="login-logo">
-      <a href=""><b>{{ school_name }}</b></a>
+            <form class="login100-form validate-form" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <span class="login100-form-title">
+                   {{ school_name }}
+                                </span>
+                <span class="error-msg"> 
+                    {% if form.errors %}
+                    <p class="error-msg">Your username and password didn't match. Please try again.</p>
+                    {% endif %}
+            
+                    {% if next %}
+                    {% if user.is_authenticated %}
+                    <p class="error-msg"> Your account doesn't have access to this page. To proceed,
+                      please login with an account that has access.</p>
+                    {% else %}
+                    </span>
+                    <p>Please Login to see this page.</p>
+                    {% endif %}
+                    {% endif %}
+                </span>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <input class="input100" id="id_username" name="username" 
+                    type="text" placeholder="Username">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <input class="input100" type="password" id="id_password" name="password" placeholder="Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+                
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit" value="Login">
+                        Login
+                    </button>
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                </div>
+
+                <div class="text-center p-t-12">
+                    <span class="txt1">
+                        Forgot
+                    </span>
+                    <a class="txt2" href="#">
+                        Username / Password?
+                    </a>
+                </div>
+
+                
+            </form>
+        </div>
     </div>
-    <!-- /.login-logo -->
-    <div class="card">
-      <div class="card-body login-card-body text-center">
-        <p class="login-box-msg">Sign in to start your session</p>
-
-        {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-        {% endif %}
-
-        {% if next %}
-        {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-          please login with an account that has access.</p>
-        {% else %}
-        <p>Please login to see this page.</p>
-        {% endif %}
-        {% endif %}
-
-        <form method="post" action="{% url 'login' %}">
-          {% csrf_token %}
-          <table>
-            <tr class="mb-2">
-              <td>{{ form.username.label_tag }}</td>
-              <td>{{ form.username | add_class:"form-control" }}</td>
-            </tr>
-            <tr class="mb-2">
-              <td>{{ form.password.label_tag }}</td>
-              <td>{{ form.password | add_class:"form-control"}}</td>
-            </tr>
-          </table>
-
-          <input type="submit" value="Login" class="btn btn-primary mt-2">
-          <input type="hidden" name="next" value="{{ next }}">
-        </form>
-      </div>
-      <!-- /.login-card-body -->
-    </div>
-  </div>
+</div>
 
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
