@@ -2,5 +2,4 @@ add system log
 workon the config page
 check all forms.html
 work on bulk upload of invoices from excel
-
-#update login page--add bootstrap to that
+password change
