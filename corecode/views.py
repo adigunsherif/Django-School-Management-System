@@ -43,6 +43,7 @@ class SessionListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
 
 
 class SessionCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+  model = AcademicSession
   form_class = AcademicSessionForm
   template_name = 'corecode/mgt_form.html'
   success_url = reverse_lazy('sessions')
@@ -103,6 +104,7 @@ class TermListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
 
 
 class TermCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+  model = AcademicTerm
   form_class = AcademicTermForm
   template_name = 'corecode/mgt_form.html'
   success_url = reverse_lazy('terms')
@@ -111,6 +113,7 @@ class TermCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 
 class TermUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+  model = AcademicTerm
   form_class = AcademicTermForm
   success_url = reverse_lazy('terms')
   success_message = 'Term successfully updated.'
@@ -156,6 +159,7 @@ class ClassListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
 
 
 class ClassCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+  model = StudentClass
   form_class = StudentClassForm
   template_name = 'corecode/mgt_form.html'
   success_url = reverse_lazy('classes')
@@ -200,6 +204,7 @@ class SubjectListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
 
 
 class SubjectCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+  model = Subject
   form_class = SubjectForm
   template_name = 'corecode/mgt_form.html'
   success_url = reverse_lazy('subjects')
