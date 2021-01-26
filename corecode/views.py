@@ -11,7 +11,7 @@ from .models import SiteConfig, AcademicSession, AcademicTerm, StudentClass, Sub
 from .forms import SiteConfigForm, AcademicTermForm, AcademicSessionForm, StudentClassForm, SubjectForm, CurrentSessionForm
 
 class IndexView(LoginRequiredMixin, TemplateView):
-      template = 'index.html'
+      template_name = 'index.html'
 
 
 @login_required
