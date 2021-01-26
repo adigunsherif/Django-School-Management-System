@@ -24,18 +24,20 @@ def create_result(request):
         results = []
         for student in students.split(','):
           stu = Student.objects.get(pk=student)
-          for subject in subjects:
-            check = Result.objects.filter(session=session, term=term,current_class=stu.current_class,subject=subject, student=stu).first()
-            if not check:
-              results.append(
-                  Result(
-                      session=session,
-                      term=term,
-                      current_class=stu.current_class,
-                      subject=subject,
-                      student=stu
-                  )
-              )
+          if stu.current_class:
+            for subject in subjects:
+              check = Result.objects.filter(session=session, term=term,current_class=stu.current_class,subject=subject, student=stu).first()
+              if not check:
+                results.append(
+                    Result(
+                        session=session,
+                        term=term,
+                        current_class=stu.current_class,
+                        subject=subject,
+                        student=stu
+                    )
+                )
+
         Result.objects.bulk_create(results)
         return redirect('edit-results')
 
