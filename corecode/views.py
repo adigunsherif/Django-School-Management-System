@@ -194,11 +194,19 @@ class SubjectListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
 
 
 class SubjectCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+<<<<<<< HEAD
     model = Subject
     form_class = SubjectForm
     template_name = 'corecode/mgt_form.html'
     success_url = reverse_lazy('subjects')
     success_message = 'New subject successfully added'
+=======
+  model = Subject
+  form_class = SubjectForm
+  template_name = 'corecode/mgt_form.html'
+  success_url = reverse_lazy('subjects')
+  success_message = 'New subject successfully added'
+>>>>>>> 67ce4c2f0dc8af6170bd8a3761d86bf2b23fbbb2
 
 
 
