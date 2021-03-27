@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms import widgets
 from django.urls import reverse_lazy
 
-from students.models import Student
+from apps.students.models import Student
 from .models import Invoice, InvoiceItem, Receipt
 from .forms import InvoiceItemFormset, InvoiceReceiptFormSet, Invoices
 

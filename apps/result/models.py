@@ -1,7 +1,7 @@
 from django.db import models
 
-from corecode.models import AcademicSession, AcademicTerm, StudentClass, Subject
-from students.models import Student
+from apps.corecode.models import AcademicSession, AcademicTerm, StudentClass, Subject
+from apps.students.models import Student
 
 from .utils import score_grade
 

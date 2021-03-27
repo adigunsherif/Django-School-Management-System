@@ -1,6 +1,6 @@
 from django.forms import inlineformset_factory, modelformset_factory
 
-from corecode.models import AcademicSession, AcademicTerm, StudentClass
+from apps.corecode.models import AcademicSession, AcademicTerm, StudentClass
 from .models import Invoice, InvoiceItem, Receipt
 
 InvoiceItemFormset = inlineformset_factory(

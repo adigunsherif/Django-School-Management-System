@@ -9,8 +9,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms import widgets
 from django.urls import reverse_lazy
 
+from apps.finance.models import Invoice
+
 from .models import Student, StudentBulkUpload
-from finance.models import Invoice
+
 
 @login_required
 def student_list(request):

@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, HttpResponseRedirect, redirect
 
-from corecode.models import AcademicSession, AcademicTerm
-from students.models import Student
+from apps.corecode.models import AcademicSession, AcademicTerm
+from apps.students.models import Student
 
 from .models import Result
 from .forms import CreateResults, EditResults

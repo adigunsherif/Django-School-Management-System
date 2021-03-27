@@ -4,7 +4,7 @@ from io import StringIO
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
-from corecode.models import StudentClass
+from apps.corecode.models import StudentClass
 from .models import Student, StudentBulkUpload
 
 @receiver(post_save, sender=StudentBulkUpload)
