@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class CorecodeConfig(AppConfig):
-    name = 'corecode'
+    name = 'apps.corecode'
 
     def ready(self):
-        import corecode.signals
+        import apps.corecode.signals

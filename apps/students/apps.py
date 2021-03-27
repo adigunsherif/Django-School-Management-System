@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class StudentsConfig(AppConfig):
-    name = 'students'
+    name = 'apps.students'
 
     def ready(self):
-        import students.signals
+        import apps.students.signals

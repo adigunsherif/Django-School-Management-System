@@ -2,8 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
-from corecode.models import StudentClass, AcademicSession, AcademicTerm
-from students.models import Student
+from apps.corecode.models import StudentClass, AcademicSession, AcademicTerm
+from apps.students.models import Student
 
 class Invoice(models.Model):
   student = models.ForeignKey(Student, on_delete=models.CASCADE)

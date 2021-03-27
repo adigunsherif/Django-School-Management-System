@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import modelformset_factory, BaseModelFormSet
-from corecode.models import AcademicSession, AcademicTerm, Subject
+
+from apps.corecode.models import AcademicSession, AcademicTerm, Subject
 
 from .models import Result
 

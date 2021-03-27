@@ -19,9 +19,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', include('corecode.urls')),
-    path('student/', include('students.urls')),
-    path('staff/', include('staffs.urls')),
-    path('finance/', include('finance.urls')),
-    path('result/', include('result.urls')),
+    path('', include('apps.corecode.urls')),
+    path('student/', include('apps.students.urls')),
+    path('staff/', include('apps.staffs.urls')),
+    path('finance/', include('apps.finance.urls')),
+    path('result/', include('apps.result.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

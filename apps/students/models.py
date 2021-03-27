@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
-
-from corecode.models import StudentClass, Subject
 from django.core.validators import RegexValidator
+
+from apps.corecode.models import StudentClass, Subject
+
 
 class Student(models.Model):
   STATUS = [
