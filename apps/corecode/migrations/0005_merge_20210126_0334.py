@@ -7,7 +7,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('corecode', '0004_auto_20201124_0608'),
-        ('corecode', '0004_auto_20201124_0614'),
     ]
 
     operations = [
