@@ -57,6 +57,11 @@ isort .
 black .
 ```
 
+## Test
+```base
+python manage.py test
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
