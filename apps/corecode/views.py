@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import HttpResponseRedirect, redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import ListView, TemplateView, View
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from .forms import (
@@ -28,20 +28,23 @@ class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "index.html"
 
 
-@login_required
-def siteconfig_view(request):
+class SiteConfigView(LoginRequiredMixin, View):
     """Site Config View"""
-    if request.method == "POST":
-        form = SiteConfigForm(request.POST)
+
+    form_class = SiteConfigForm
+    template_name = "corecode/siteconfig.html"
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(queryset=SiteConfig.objects.all())
         if form.is_valid():
             form.save()
             messages.success(request, "Configurations successfully updated")
             return HttpResponseRedirect("site-config")
-    else:
-        form = SiteConfigForm(queryset=SiteConfig.objects.all())
 
-    context = {"formset": form, "title": "Configuration"}
-    return render(request, "corecode/siteconfig.html", context)
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        context = {"formset": form, "title": "Configuration"}
+        return render(request, self.template_name, context)
 
 
 class SessionListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
@@ -234,25 +237,28 @@ class SubjectDeleteView(LoginRequiredMixin, DeleteView):
         return super(SubjectDeleteView, self).delete(request, *args, **kwargs)
 
 
-@login_required
-def current_session_view(request):
+class CurrentSessionAndTermView(LoginRequiredMixin, View):
     """Current SEssion and Term"""
-    if request.method == "POST":
-        form = CurrentSessionForm(request.POST)
+
+    form_class = CurrentSessionForm
+    template_name = "corecode/current_session.html"
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(
+            initial={
+                "current_session": AcademicSession.objects.get(current=True),
+                "current_term": AcademicTerm.objects.get(current=True),
+            }
+        )
+        return render(request, self.template_name, {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_Class(request.POST)
         if form.is_valid():
             session = form.cleaned_data["current_session"]
             term = form.cleaned_data["current_term"]
             AcademicSession.objects.filter(name=session).update(current=True)
             AcademicSession.objects.exclude(name=session).update(current=False)
             AcademicTerm.objects.filter(name=term).update(current=True)
-            AcademicTerm.objects.exclude(name=term).update(current=False)
 
-    else:
-        form = CurrentSessionForm(
-            initial={
-                "current_session": AcademicSession.objects.get(current=True),
-                "current_term": AcademicTerm.objects.get(current=True),
-            }
-        )
-
-    return render(request, "corecode/current_session.html", {"form": form})
+        return render(request, self.template_name, {"form": form})

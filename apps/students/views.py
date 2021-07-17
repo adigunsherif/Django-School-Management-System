@@ -1,13 +1,11 @@
 import csv
 
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import widgets
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView, View
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from apps.finance.models import Invoice
@@ -15,10 +13,9 @@ from apps.finance.models import Invoice
 from .models import Student, StudentBulkUpload
 
 
-@login_required
-def student_list(request):
-    students = Student.objects.all()
-    return render(request, "students/student_list.html", {"students": students})
+class StudentListView(LoginRequiredMixin, ListView):
+    model = Student
+    template_name = "students/student_list.html"
 
 
 class StudentDetailView(LoginRequiredMixin, DetailView):
@@ -76,23 +73,23 @@ class StudentBulkUploadView(LoginRequiredMixin, SuccessMessageMixin, CreateView)
     success_message = "Successfully uploaded students"
 
 
-@login_required
-def downloadcsv(request):
-    response = HttpResponse(content_type="text/csv")
-    response["Content-Disposition"] = 'attachment; filename="student_template.csv"'
+class DownloadCSVViewdownloadcsv(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        response = HttpResponse(content_type="text/csv")
+        response["Content-Disposition"] = 'attachment; filename="student_template.csv"'
 
-    writer = csv.writer(response)
-    writer.writerow(
-        [
-            "registration_number",
-            "surname",
-            "firstname",
-            "other_names",
-            "gender",
-            "parent_number",
-            "address",
-            "current_class",
-        ]
-    )
+        writer = csv.writer(response)
+        writer.writerow(
+            [
+                "registration_number",
+                "surname",
+                "firstname",
+                "other_names",
+                "gender",
+                "parent_number",
+                "address",
+                "current_class",
+            ]
+        )
 
-    return response
+        return response

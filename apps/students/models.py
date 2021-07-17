@@ -7,16 +7,18 @@ from apps.corecode.models import StudentClass
 
 
 class Student(models.Model):
-    STATUS = [("active", "Active"), ("inactive", "Inactive")]
+    STATUS_CHOICES = [("active", "Active"), ("inactive", "Inactive")]
 
-    GENDER = [("male", "Male"), ("female", "Female")]
+    GENDER_CHOICES = [("male", "Male"), ("female", "Female")]
 
-    current_status = models.CharField(max_length=10, choices=STATUS, default="active")
+    current_status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default="active"
+    )
     registration_number = models.CharField(max_length=200, unique=True)
     surname = models.CharField(max_length=200)
     firstname = models.CharField(max_length=200)
     other_name = models.CharField(max_length=200, blank=True)
-    gender = models.CharField(max_length=10, choices=GENDER, default="male")
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male")
     date_of_birth = models.DateField(default=timezone.now)
     current_class = models.ForeignKey(
         StudentClass, on_delete=models.SET_NULL, blank=True, null=True

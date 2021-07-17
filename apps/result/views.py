@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
+from django.views.generic import DetailView, ListView, View
 
 from apps.students.models import Student
 
@@ -83,30 +85,30 @@ def edit_results(request):
     return render(request, "result/edit_results.html", {"formset": form})
 
 
-@login_required
-def all_results_view(request):
-    results = Result.objects.filter(
-        session=request.current_session, term=request.current_term
-    )
-    bulk = {}
+class ResultListView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        results = Result.objects.filter(
+            session=request.current_session, term=request.current_term
+        )
+        bulk = {}
 
-    for result in results:
-        test_total = 0
-        exam_total = 0
-        subjects = []
-        for subject in results:
-            if subject.student == result.student:
-                subjects.append(subject)
-                test_total += subject.test_score
-                exam_total += subject.exam_score
+        for result in results:
+            test_total = 0
+            exam_total = 0
+            subjects = []
+            for subject in results:
+                if subject.student == result.student:
+                    subjects.append(subject)
+                    test_total += subject.test_score
+                    exam_total += subject.exam_score
 
-        bulk[result.student.id] = {
-            "student": result.student,
-            "subjects": subjects,
-            "test_total": test_total,
-            "exam_total": exam_total,
-            "total_total": test_total + exam_total,
-        }
+            bulk[result.student.id] = {
+                "student": result.student,
+                "subjects": subjects,
+                "test_total": test_total,
+                "exam_total": exam_total,
+                "total_total": test_total + exam_total,
+            }
 
-    context = {"results": bulk}
-    return render(request, "result/all_results.html", context)
+        context = {"results": bulk}
+        return render(request, "result/all_results.html", context)
