@@ -35,15 +35,16 @@ class SiteConfigView(LoginRequiredMixin, View):
     template_name = "corecode/siteconfig.html"
 
     def get(self, request, *args, **kwargs):
-        form = self.form_class(queryset=SiteConfig.objects.all())
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Configurations successfully updated")
-            return HttpResponseRedirect("site-config")
+        formset = self.form_class(queryset=SiteConfig.objects.all())
+        context = {"formset": formset}
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        context = {"formset": form, "title": "Configuration"}
+        formset = self.form_class(request.POST)
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Configurations successfully updated")
+        context = {"formset": formset, "title": "Configuration"}
         return render(request, self.template_name, context)
 
 
