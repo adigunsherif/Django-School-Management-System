@@ -36,13 +36,14 @@ class SiteConfigView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(queryset=SiteConfig.objects.all())
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Configurations successfully updated")
-            return HttpResponseRedirect("site-config")
+        context = {"form": form}
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Configurations successfully updated")
         context = {"formset": form, "title": "Configuration"}
         return render(request, self.template_name, context)
 
