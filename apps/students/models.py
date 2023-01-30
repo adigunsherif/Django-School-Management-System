@@ -2,6 +2,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+import school_app.settings as sett
 
 from apps.corecode.models import StudentClass
 
@@ -20,6 +21,7 @@ class Student(models.Model):
     other_name = models.CharField(max_length=200, blank=True, verbose_name="Отчество")
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male", verbose_name="Пол")
     date_of_birth = models.DateField(default=timezone.now, verbose_name="Дата рождения")
+    position = models.CharField(max_length=200, verbose_name="Должность")
     current_class = models.ForeignKey(
         StudentClass, on_delete=models.SET_NULL, blank=True, null=True
     )
