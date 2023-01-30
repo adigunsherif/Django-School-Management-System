@@ -7,34 +7,34 @@ from apps.corecode.models import StudentClass
 
 
 class Student(models.Model):
-    STATUS_CHOICES = [("active", "Active"), ("inactive", "Inactive")]
+    STATUS_CHOICES = [("active", "Работает"), ("inactive", "Уволенный")]
 
-    GENDER_CHOICES = [("male", "Male"), ("female", "Female")]
+    GENDER_CHOICES = [("male", "Муж"), ("female", "Жен")]
 
     current_status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default="active"
+        max_length=10, choices=STATUS_CHOICES, default="active", verbose_name="Статус"
     )
-    registration_number = models.CharField(max_length=200, unique=True)
-    surname = models.CharField(max_length=200)
-    firstname = models.CharField(max_length=200)
-    other_name = models.CharField(max_length=200, blank=True)
-    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male")
-    date_of_birth = models.DateField(default=timezone.now)
+    registration_number = models.CharField(max_length=200, unique=True, verbose_name="Табельный номер")
+    surname = models.CharField(max_length=200, verbose_name="Фамилия")
+    firstname = models.CharField(max_length=200, verbose_name="Имя")
+    other_name = models.CharField(max_length=200, blank=True, verbose_name="Отчество")
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male", verbose_name="Пол")
+    date_of_birth = models.DateField(default=timezone.now, verbose_name="Дата рождения")
     current_class = models.ForeignKey(
         StudentClass, on_delete=models.SET_NULL, blank=True, null=True
     )
-    date_of_admission = models.DateField(default=timezone.now)
+    date_of_admission = models.DateField(default=timezone.now, verbose_name="Дата приема")
 
     mobile_num_regex = RegexValidator(
         regex="^[0-9]{10,15}$", message="Entered mobile number isn't in a right format!"
     )
     parent_mobile_number = models.CharField(
-        validators=[mobile_num_regex], max_length=13, blank=True
+        validators=[mobile_num_regex], max_length=13, blank=True, verbose_name="Тел номер"
     )
 
     address = models.TextField(blank=True)
     others = models.TextField(blank=True)
-    passport = models.ImageField(blank=True, upload_to="students/passports/")
+    passport = models.ImageField(blank=True, upload_to="students/passports/", verbose_name="Паспорт")
 
     class Meta:
         ordering = ["surname", "firstname", "other_name"]

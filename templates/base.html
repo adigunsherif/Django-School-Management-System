@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>{{ school_name | default:"Мигрант Док" }}</title>
+  <title>{{ school_name | default:"МигрантДок" }}</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
@@ -39,10 +39,10 @@
           <a href="{% url 'home' %} " class="nav-link"><i class="fa fa-home"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{% url 'current-session' %}" class="nav-link">Session: {{ current_session }}</a>
+          <a href="{% url 'current-session' %}" class="nav-link">Год: {{ current_session }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{% url 'current-session' %}" class="nav-link">Term: {{ current_term }}</a>
+          <a href="{% url 'current-session' %}" class="nav-link">Сессия: {{ current_term }}</a>
         </li>
       </ul>
 
@@ -76,7 +76,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="{% url 'home' %}" class="brand-link">{{ school_name | default:"Мигрант Док" }}</a>
+      <a href="{% url 'home' %}" class="brand-link">{{ school_name | default:"МигрантДок" }}</a>
 
       <!-- Sidebar -->
       <div class="sidebar">
@@ -102,12 +102,12 @@
               </a>
             </li>
 
-            <li class="nav-header">Финансы</li>
+            <li class="nav-header">Бланки</li>
             <li class="nav-item">
               <a href="{% url 'invoice-list' %}" class="nav-link">
                 <i class="nav-icon fas fa-money-bill-alt"></i>
                 <p>
-                  Invoices
+                  Бланки
                 </p>
               </a>
             </li>
@@ -116,7 +116,7 @@
               <a href="{% url 'create-result' %}" class="nav-link">
                 <i class="nav-icon fas fa-money-bill-alt"></i>
                 <p>
-                  Create Results
+                  Создать Отчеты
                 </p>
               </a>
             </li>
@@ -137,12 +137,12 @@
               </a>
             </li>
 
-            <li class="nav-header">Others</li>
+            <li class="nav-header">Остальные</li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
-                  Management
+                  Управление
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -151,7 +151,7 @@
                   <a href="{% url 'sessions' %}" class="nav-link">
                     <i class="nav-icon fas fa-bars"></i>
                     <p>
-                      Sessions
+                      Сессии
                     </p>
                   </a>
                 </li>

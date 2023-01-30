@@ -4,7 +4,7 @@
 {% block content-header %}
 <div class="card-header">
   <div class="card-tools">
-    <a href="#" class="btn btn-tool">Print</a>
+    <a href="#" class="btn btn-tool">Распечатать</a>
     <a href="{% url 'student-update' object.id %}" class="btn btn-tool">
       <i class="fas fa-edit"></i>
     </a>
@@ -46,7 +46,7 @@
         <div>
           <div class="form-group border-bottom row">
             <label class="col">
-              Date of Birth
+              Дата рождения
             </label>
             <div class="col">
               {{ object.date_of_birth }}
@@ -55,7 +55,7 @@
 
           <div class="form-group border-bottom row">
             <label class="col">
-              Parent Mobile Number
+              Тел номер
             </label>
             <div class="col">
               {{ object.parent_mobile_number}}
@@ -64,7 +64,7 @@
 
           <div class="form-group border-bottom row">
             <label class="col">
-              Address
+              Адрес
             </label>
             <div class="col">
               {{ object.address }}
@@ -72,7 +72,7 @@
           </div>
           <div class="form-group border-bottom row">
             <label class="col">
-              Comments
+              Комментарий
             </label>
             <div class="col">
               {{ object.others }}
