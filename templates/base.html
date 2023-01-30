@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>{{ school_name | default:"MySchool" }}</title>
+  <title>{{ school_name | default:"Мигрант Док" }}</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
@@ -57,11 +57,11 @@
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">
-              <i class="fas fa-user mr-2"></i> Profile
+              <i class="fas fa-user mr-2"></i> Профил
             </a>
             <div class="dropdown-divider"></div>
             <a href="{% url 'logout' %}" class="dropdown-item">
-              <i class="fas fa-sign-out"></i> Sign out
+              <i class="fas fa-sign-out"></i> Выйти
             </a>
           </div>
         </li>
@@ -76,7 +76,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="{% url 'home' %}" class="brand-link">{{ school_name | default:"MySchool" }}</a>
+      <a href="{% url 'home' %}" class="brand-link">{{ school_name | default:"Мигрант Док" }}</a>
 
       <!-- Sidebar -->
       <div class="sidebar">
@@ -89,7 +89,7 @@
               <a href="{% url 'student-list' %}" class="nav-link">
                 <i class="nav-icon fas fa-graduation-cap"></i>
                 <p>
-                  Students
+                  Сотрудники
                 </p>
               </a>
             </li>
@@ -102,7 +102,7 @@
               </a>
             </li>
 
-            <li class="nav-header">Finance</li>
+            <li class="nav-header">Финансы</li>
             <li class="nav-item">
               <a href="{% url 'invoice-list' %}" class="nav-link">
                 <i class="nav-icon fas fa-money-bill-alt"></i>
@@ -111,7 +111,7 @@
                 </p>
               </a>
             </li>
-            <li class="nav-header">Results</li>
+            <li class="nav-header">Отчеты</li>
             <li class="nav-item">
               <a href="{% url 'create-result' %}" class="nav-link">
                 <i class="nav-icon fas fa-money-bill-alt"></i>
@@ -186,7 +186,7 @@
               <a href="{% url 'configs' %}" class="nav-link">
                 <i class="nav-icon fas fa-cog"></i>
                 <p>
-                  Settings
+                  Настройки
                 </p>
               </a>
             </li>
