@@ -15,7 +15,7 @@ urlpatterns = [
     path("<int:pk>/", EmployeeDetailView.as_view(), name="employee-detail"),
     path("create/", EmployeeCreateView.as_view(), name="employee-create"),
     path("<int:pk>/update/", EmployeeUpdateView.as_view(), name="employee-update"),
-    path("delete/<int:pk>/", EmployeeDeleteView.as_view(), name="employee-delete"),
+    path("<int:pk>/delete/", EmployeeDeleteView.as_view(), name="employee-delete"),
     path("upload/", EmployeeBulkUploadView.as_view(), name="employee-upload"),
     path("download-csv/", DownloadCSVViewdownloadcsv.as_view(), name="download-csv"),
 ]
