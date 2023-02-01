@@ -6,14 +6,14 @@ from apps.corecode.models import (
     StudentClass,
     Subject,
 )
-from apps.students.models import Student
+from apps.employees.models import Employee
 
 from .utils import score_grade
 
 
 # Create your models here.
 class Result(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     session = models.ForeignKey(AcademicSession, on_delete=models.CASCADE)
     term = models.ForeignKey(AcademicTerm, on_delete=models.CASCADE)
     current_class = models.ForeignKey(StudentClass, on_delete=models.CASCADE)
@@ -25,7 +25,7 @@ class Result(models.Model):
         ordering = ["subject"]
 
     def __str__(self):
-        return f"{self.student} {self.session} {self.term} {self.subject}"
+        return f"{self.employee} {self.session} {self.term} {self.subject}"
 
     def total_score(self):
         return self.test_score + self.exam_score

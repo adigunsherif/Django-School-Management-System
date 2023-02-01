@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView, View
 
-from apps.students.models import Student
+from apps.employees.models import Employee
 
 from .forms import CreateResults, EditResults
 from .models import Result
@@ -12,7 +12,7 @@ from .models import Result
 
 @login_required
 def create_result(request):
-    students = Student.objects.all()
+    employees = Employee.objects.all()
     if request.method == "POST":
 
         # after visiting the second page
@@ -22,10 +22,10 @@ def create_result(request):
                 subjects = form.cleaned_data["subjects"]
                 session = form.cleaned_data["session"]
                 term = form.cleaned_data["term"]
-                students = request.POST["students"]
+                employeesloyees = request.POST["employees"]
                 results = []
-                for student in students.split(","):
-                    stu = Student.objects.get(pk=student)
+                for employee in employees.split(","):
+                    stu = Employee.objects.get(pk=employee)
                     if stu.current_class:
                         for subject in subjects:
                             check = Result.objects.filter(
@@ -33,7 +33,7 @@ def create_result(request):
                                 term=term,
                                 current_class=stu.current_class,
                                 subject=subject,
-                                student=stu,
+                                employee=stu,
                             ).first()
                             if not check:
                                 results.append(
@@ -42,15 +42,15 @@ def create_result(request):
                                         term=term,
                                         current_class=stu.current_class,
                                         subject=subject,
-                                        student=stu,
+                                        employee=stu,
                                     )
                                 )
 
                 Result.objects.bulk_create(results)
                 return redirect("edit-results")
 
-        # after choosing students
-        id_list = request.POST.getlist("students")
+        # after choosing employees
+        id_list = request.POST.getlist("employees")
         if id_list:
             form = CreateResults(
                 initial={
@@ -58,15 +58,15 @@ def create_result(request):
                     "term": request.current_term,
                 }
             )
-            studentlist = ",".join(id_list)
+            employeelist = ",".join(id_list)
             return render(
                 request,
                 "result/create_result_page2.html",
-                {"students": studentlist, "form": form, "count": len(id_list)},
+                {"employees": employeelist, "form": form, "count": len(id_list)},
             )
         else:
-            messages.warning(request, "You didnt select any student.")
-    return render(request, "result/create_result.html", {"students": students})
+            messages.warning(request, "You didnt select any employee.")
+    return render(request, "result/create_result.html", {"employee": employees})
 
 
 @login_required
@@ -97,13 +97,13 @@ class ResultListView(LoginRequiredMixin, View):
             exam_total = 0
             subjects = []
             for subject in results:
-                if subject.student == result.student:
+                if subject.employee == result.employee:
                     subjects.append(subject)
                     test_total += subject.test_score
                     exam_total += subject.exam_score
 
-            bulk[result.student.id] = {
-                "student": result.student,
+            bulk[result.employee.id] = {
+                "employee": result.employee,
                 "subjects": subjects,
                 "test_total": test_total,
                 "exam_total": exam_total,

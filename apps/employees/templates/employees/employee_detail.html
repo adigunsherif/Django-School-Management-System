@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content-header %}
+<div class="card-header">
+  <div class="card-tools">
+    <a href="#" class="btn btn-tool">Распечатать</a>
+    <a href="{% url 'employee-update' object.id %}" class="btn btn-tool">
+      <i class="fas fa-edit"></i>
+    </a>
+    <a href="{% url 'employee-delete' object.id %}" class="btn btn-tool">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+</div>
+{% endblock content-header %}
+
+{% block content %}
+    <div class="row mb-4">
+      <div class="col-sm-4">
+        <div class="row mb-2">
+
+          {% if object.passport %}
+            <img
+              src="{{ object.passport.url }}"
+              class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
+          {% else %}
+            <img
+              src="{% static 'dist/img/avatar.png' %}"
+              class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
+          {% endif %}
+
+
+          <div class="float-right">
+            <h4>{{ object.surname }} </h4>
+            <h4>{{ object.firstname }} </h4>
+            <h4>{{ object.other_name }} </h4>
+            <h4>{{ object.registration_number }} </h4>
+          </div>
+        </div>
+        <h5>{{ object.current_class }} </h5>
+        <h5>{{ object.get_gender_display }} | {{ object.get_current_status_display }}</h5>
+
+      </div>
+      <div class="col-sm-8">
+        <div>
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Дата рождения
+            </label>
+            <div class="col">
+              {{ object.date_of_birth }}
+            </div>
+          </div>
+
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Тел номер
+            </label>
+            <div class="col">
+              {{ object.parent_mobile_number}}
+            </div>
+          </div>
+
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Адрес
+            </label>
+            <div class="col">
+              {{ object.address }}
+            </div>
+          </div>
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Комментарий
+            </label>
+            <div class="col">
+              {{ object.others }}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <h4>Invoice/Payment History</h4>
+    {% if payments %}
+      <table class="table table-sm table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>For</th>
+            <th>Amount Payable</th>
+            <th>Amount Paid</th>
+            <th>balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for payment in payments %}
+            <tr class='clickable-row' data-href="{% url 'invoice-detail' payment.id %}">
+              <td>{{payment.session}} - {{payment.term}} - {{ payment.class_for}}</td>
+              <td>{{payment.total_amount_payable}}</td>
+              <td>{{payment.total_amount_paid}}</td>
+              <td>{{payment.balance}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+        <p>There are no payment history for {{object}}</p>
+    {% endif %}
+
+
+
+
+{% endblock content %}

@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     "widget_tweaks",
     "apps.corecode",
-    "apps.students",
-    "apps.staffs",
-    "apps.finance",
-    "apps.result",
+ #   "apps.students",
+ #   "apps.staffs",
+ #   "apps.finance",
+ #   "apps.result",
+    "apps.employees",
 ]
 
 MIDDLEWARE = [

@@ -3,11 +3,11 @@ from django.urls import reverse
 from django.utils import timezone
 
 from apps.corecode.models import AcademicSession, AcademicTerm, StudentClass
-from apps.students.models import Student
+from apps.employees.models import Employee
 
 
 class Invoice(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     session = models.ForeignKey(AcademicSession, on_delete=models.CASCADE)
     term = models.ForeignKey(AcademicTerm, on_delete=models.CASCADE)
     class_for = models.ForeignKey(StudentClass, on_delete=models.CASCADE)
@@ -19,10 +19,10 @@ class Invoice(models.Model):
     )
 
     class Meta:
-        ordering = ["student", "term"]
+        ordering = ["employee", "term"]
 
     def __str__(self):
-        return f"{self.student}"
+        return f"{self.employee}"
 
     def balance(self):
         payable = self.total_amount_payable()
