@@ -1,12 +1,12 @@
-# Django-School-Management-System
+# Django-Human-Resources-Management-System
 
-This app is meant to be used by school manager to manage their school records:
-student data
+This app is meant to be used by HR manager to manage their hrm records:
+employee data
 staff
 results and
 finances.
 
-It currently doesn't allow students/staff to login.
+It currently doesn't allow employees/staff to login.
 Solely, it's expected to be used on a single machine or online for managers only.
 
 ## Demo
@@ -20,7 +20,7 @@ password: admin123
 It's best to install Python projects in a Virtual Environment. Once you have set up a VE, clone this project
 
 ```bash
-git clone https://github.com/adigunsherif/Django-School-Management-System.git
+git clone https://github.com/shariforz/Human-Resources-Management-System.git
 ```
 Then
 
