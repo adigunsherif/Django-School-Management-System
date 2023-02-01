@@ -25,7 +25,7 @@ git clone https://github.com/shariforz/Human-Resources-Management-System.git
 Then
 
 ```bash
-cd Django-School-Management-System
+cd Human-Resources-Management-System
 ```
 Run
 
