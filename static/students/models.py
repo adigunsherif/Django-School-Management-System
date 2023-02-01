@@ -2,7 +2,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-import school_app.settings as sett
+import hrm_app.settings as sett
 
 from apps.corecode.models import StudentClass
 

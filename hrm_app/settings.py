@@ -59,7 +59,7 @@ MIDDLEWARE = [
     "apps.corecode.middleware.SiteWideConfigs",    
 ]
 
-ROOT_URLCONF = "school_app.urls"
+ROOT_URLCONF = "hrm_app.urls"
 
 TEMPLATES = [
     {
@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "school_app.wsgi.application"
+WSGI_APPLICATION = "hrm_app.wsgi.application"
 
 
 # Database
