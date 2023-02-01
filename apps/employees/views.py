@@ -24,7 +24,7 @@ class EmployeeDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(EmployeeDetailView, self).get_context_data(**kwargs)
-        context["payments"] = Invoice.objects.filter(employee=self.object)
+    #    context["payments"] = Invoice.objects.filter(employee=self.object)
         return context
 
 
