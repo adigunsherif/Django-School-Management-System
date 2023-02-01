@@ -94,7 +94,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'employee-list' %}" class="nav-link">
+              <a href="{% url 'staff-list' %}" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Member of Staff
@@ -104,7 +104,7 @@
 
             <li class="nav-header">Бланки</li>
             <li class="nav-item">
-              <a href="{% url 'employee-list' %}" class="nav-link">
+              <a href="{% url 'invoice-list' %}" class="nav-link">
                 <i class="nav-icon fas fa-money-bill-alt"></i>
                 <p>
                   Бланки
@@ -112,7 +112,30 @@
               </a>
             </li>
             <li class="nav-header">Отчеты</li>
-            
+            <li class="nav-item">
+              <a href="{% url 'create-result' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Создать Отчеты
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'edit-results' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Update Results
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'view-results' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  View Results
+                </p>
+              </a>
+            </li>
 
             <li class="nav-header">Остальные</li>
             <li class="nav-item has-treeview">
