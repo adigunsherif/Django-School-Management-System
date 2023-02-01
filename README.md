@@ -20,7 +20,7 @@ password: admin123
 It's best to install Python projects in a Virtual Environment. Once you have set up a VE, clone this project
 
 ```bash
-git clone https://github.com/adigunsherif/Django-School-Management-System.git
+git clone https://github.com/shariforz/Human-Resources-Management-System.git
 ```
 Then
 
