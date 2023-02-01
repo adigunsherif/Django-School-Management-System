@@ -85,7 +85,30 @@
     </div>
 
     <h4>Invoice/Payment History</h4>
-    <p>There are no payment history for {{object}}</p>
+    {% if payments %}
+      <table class="table table-sm table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>For</th>
+            <th>Amount Payable</th>
+            <th>Amount Paid</th>
+            <th>balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for payment in payments %}
+            <tr class='clickable-row' data-href="{% url 'invoice-detail' payment.id %}">
+              <td>{{payment.session}} - {{payment.term}} - {{ payment.class_for}}</td>
+              <td>{{payment.total_amount_payable}}</td>
+              <td>{{payment.total_amount_paid}}</td>
+              <td>{{payment.balance}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+        <p>There are no payment history for {{object}}</p>
+    {% endif %}
 
 
 
