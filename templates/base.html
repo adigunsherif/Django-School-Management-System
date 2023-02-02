@@ -87,9 +87,9 @@
             data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
               <a href="{% url 'employee-list' %}" class="nav-link">
-                <i class="nav-icon fas fa-graduation-cap"></i>
+                <i class="nav-icon fas fa-tasks"></i>
                 <p>
-                  Сотрудники
+                  Задачи
                 </p>
               </a>
             </li>
@@ -97,21 +97,29 @@
               <a href="{% url 'employee-list' %}" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
-                  Member of Staff
+                  Сотрудники
                 </p>
               </a>
             </li>
 
-            <li class="nav-header">Бланки</li>
+            <li class="nav-header">Бланки документов</li>
             <li class="nav-item">
               <a href="{% url 'employee-list' %}" class="nav-link">
-                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <i class="nav-icon fas fa-file"></i>
                 <p>
                   Бланки
                 </p>
               </a>
             </li>
             <li class="nav-header">Отчеты</li>
+            <li class="nav-item">
+              <a href="{% url 'employee-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Общий отчет
+                </p>
+              </a>
+            </li>
             
 
             <li class="nav-header">Остальные</li>
