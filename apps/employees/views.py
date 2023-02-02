@@ -31,7 +31,7 @@ class EmployeeDetailView(LoginRequiredMixin, DetailView):
 class EmployeeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Employee
     fields = "__all__"
-    success_message = "New Employee successfully added."
+    success_message = "Новый сотрудник успешно добавлен."
 
     def get_form(self):
         """add date picker in forms"""
@@ -45,7 +45,7 @@ class EmployeeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class EmployeeUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Employee
     fields = "__all__"
-    success_message = "Record successfully updated."
+    success_message = "Запись успешно обновлена."
 
     def get_form(self):
         """add date picker in forms"""
@@ -67,10 +67,10 @@ class EmployeeDeleteView(LoginRequiredMixin, DeleteView):
 
 class EmployeeBulkUploadView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = EmployeeBulkUpload
-    template_name = "employees/employees_upload.html"
+    template_name = "employees/employee_upload.html"
     fields = ["csv_file"]
     success_url = "/employee/list"
-    success_message = "Successfully uploaded employees"
+    success_message = "Успешно загруженные сотрудники"
 
 
 class DownloadCSVViewdownloadcsv(LoginRequiredMixin, View):

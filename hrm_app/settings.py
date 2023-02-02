@@ -89,11 +89,11 @@ WSGI_APPLICATION = "hrm_app.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tutorial',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'PASSWORD': 'uUFvUvqJFbutQXbO2nX6',
+        'HOST': 'containers-us-west-123.railway.app',
+        'PORT': '6951',
     }
 }
 
