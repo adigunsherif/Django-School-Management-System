@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
+    "whitenoise.runserver_nostatic", 
     "widget_tweaks",
     "apps.corecode",
  #   "apps.students",
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "apps.corecode.middleware.SiteWideConfigs",    
 ]
 
@@ -163,7 +165,9 @@ if DEBUG:
             os.path.join(BASE_DIR, 'static')
        ]
 else:
-        STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
