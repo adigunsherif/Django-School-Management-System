@@ -24,10 +24,15 @@ class EmployeeListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     model = Employee
     template_name = "employees/employee_list.html"
 
-    def get_context_data(request):
+    """ def get_context_data(request):
         #context = super().get_context_data(**kwargs)
         #context["form"] = EmployeeForm()
         context ={}
+        context["employees"] = Employee.objects.all()
+        return context """
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context["employees"] = Employee.objects.all()
         return context
 
