@@ -48,8 +48,6 @@ class Employee(models.Model):
     def get_absolute_url(self):
         return reverse("employee-detail", kwargs={"pk": self.pk})
 
-        name = models.CharField(max_length=200, unique=True)
-
 
 class EmployeeBulkUpload(models.Model):
     date_uploaded = models.DateTimeField(auto_now=True)
