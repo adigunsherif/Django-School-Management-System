@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+
+{% if object %}
+Update invoice {{ object }}
+{% else %}
+Add new invoice
+{% endif %}
+
+{% endblock title %}
+
+
+{% block content %}
+
+<form method="POST">
+  {% csrf_token %}
+
+  <div class="row">
+    <div class="col-sm-6">
+      {% for field in form %}
+      <div class="form-group row">
+        <label class="col col-form-label" for="{{ field.auto_id }}">
+          {{ field.label }}
+          {% for error in field.errors %}
+          <small id="{{ field.auto_id }}" class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </label>
+        <div class="col">
+          {{ field | add_class:"form-control"}}
+          {% if field.help_text %}
+          <small>{{ field.help_text|safe }}</small>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-sm-6 callout callout-info">
+      {{ items.management_form }}
+      <div class="text-center">FEE STRUCTURE</div>
+      <div class="row">
+        <div class="col"><strong>Fee Type</strong></div>
+        <div class="col"><strong>Amount</strong></div>
+      </div>
+      {% for item in items %}
+      <div class="form-group row items-group">
+        {{ item.id}}
+        <div class="col">{{ item.description | add_class:"form-control"}}</div>
+        <div class="col">{{ item.amount | add_class:"form-control"}}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+  {% if object %}
+    <h4>RECEIPTS</h4>
+    <table class="table table-sm">
+      {{ receipts.management_form }}
+      <thead class="thead-light">
+        <tr>
+          <th>Amount Paid</th>
+          <th>Date Paid</th>
+          <th>Comment</th>
+          <th><i class="fa fa-trash"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for receipt in receipts %}
+        {% for hidden in receipt.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+        <tr>
+          {% for field in receipt.visible_fields %}
+          <td>{{ field | add_class:"form-control form-control-sm"}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  {% endif %}
+
+  {% if object %}
+  <input type="submit" class="btn btn-primary" value="Update Record">
+  {% else %}
+  <input type="submit" class="btn btn-primary" value="Add new invoice">
+  {% endif %}
+</form>
+
+<hr>
+
+
+{% endblock content %}
+
+{% block morejs %}
+<script>
+  $(".items-group").formset(
+    {
+      prefix: '{{ items.prefix }}',
+      deleteText: "<div class='btn btn-danger btn-circle'><i class='fas fa-trash'></i></div>",
+      addText: "<div class='btn btn-success btn-circle'><i class='fas fa-plus'></i></div>"
+    }
+  )
+</script>
+{% endblock morejs %}

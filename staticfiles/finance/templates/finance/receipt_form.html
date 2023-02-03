@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-8">
+    <form action="" method="POST">
+      {% csrf_token %}
+
+      {% include 'corecode/form_snippet.html' %}
+
+      <input type="submit" class="btn btn-primary" value="Add payment">
+
+    </form>
+  </div>
+
+  <div class="col-4">
+    <div class="alert alert-info" role="alert">
+      <h3>INVOICE</h3>
+      <p>{{invoice | upper}}</p>
+      <hr>
+      <ul>
+
+        <li>Session: {{ invoice.session }}</li>
+        <li>Term: {{ invoice.term }}</li>
+        <li>Class: {{ invoice.class_for }}</li>
+        <li>Total Amount Payable: {{invoice.total_amount_payable | intcomma }}
+        </li>
+        <li>Total Amount Paid: {{ invoice.total_amount_paid | intcomma }}</li>
+        <li><strong>Balance: {{invoice.balance | intcomma }}</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

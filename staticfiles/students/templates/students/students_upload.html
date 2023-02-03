@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  Upload Bulk Students from file
+{% endblock title %}
+
+
+{% block content %}
+
+  <div class="col alert alert-info">
+    <h5>Instruction</h5>
+    <p>Please <a href="{% url 'download-csv' %}">download the CSV file attached here</a>. Fill in the sheet and upload the same file back to this page. DO NOT EDIT THE FIRST ROW</p>
+  </div>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include 'corecode/form_snippet.html' %}
+
+    <input type="submit" class="btn btn-success" value="Submit">
+  </form>
+
+{% endblock content %}

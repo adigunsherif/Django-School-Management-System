@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+  {% if object %}
+    Обновить {{ object }}
+  {% else %}
+    Добавить нового сотрудника
+  {% endif %}
+
+{% endblock title %}
+
+
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% include 'corecode/form_snippet.html' %}
+
+  {% if object %}
+    <input type="submit" class="btn btn-primary" value="Обновить запись">
+  {% else %}
+    <input type="submit" class="btn btn-primary" value="Добавить нового сотрудника">
+  {% endif %}
+</form>
+
+
+{% endblock content %}
