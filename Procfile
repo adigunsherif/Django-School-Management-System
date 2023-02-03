@@ -1,1 +1,1 @@
-web: gunicorn 'Human-Resources-Management-System.wsgi'
+web: gunicorn 'hrm_app.wsgi'
