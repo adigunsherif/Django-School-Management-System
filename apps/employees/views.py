@@ -1,21 +1,35 @@
 import csv
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import widgets
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, View
+from django.shortcuts import HttpResponseRedirect, redirect, render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 #from apps.finance.models import Invoice
 
 from .models import Employee, EmployeeBulkUpload
 
+from .forms import (
+    EmployeeForm
+)
 
-class EmployeeListView(LoginRequiredMixin, ListView):
+
+
+class EmployeeListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     model = Employee
     template_name = "employees/employee_list.html"
+
+    def get_context_data(request):
+        #context = super().get_context_data(**kwargs)
+        #context["form"] = EmployeeForm()
+        context ={}
+        context["employees"] = Employee.objects.all()
+        return context
 
 #def home(request):
 #   employee_list = Employee.objects.all()

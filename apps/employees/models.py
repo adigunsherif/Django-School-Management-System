@@ -42,10 +42,13 @@ class Employee(models.Model):
         ordering = ["surname", "firstname", "other_name"]
 
     def __str__(self):
-        return f"{self.surname} {self.firstname} {self.other_name} ({self.registration_number})"
+        #return f"{self.surname} {self.firstname} {self.other_name} ({self.registration_number})"
+        return "{} {} {} {}".format(self.firstname, self.surname, self.other_name, self.registration_number)
 
     def get_absolute_url(self):
         return reverse("employee-detail", kwargs={"pk": self.pk})
+
+        name = models.CharField(max_length=200, unique=True)
 
 
 class EmployeeBulkUpload(models.Model):
