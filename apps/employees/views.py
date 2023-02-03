@@ -17,6 +17,10 @@ class EmployeeListView(LoginRequiredMixin, ListView):
     model = Employee
     template_name = "employees/employee_list.html"
 
+#def home(request):
+#   employee_list = Employee.objects.all()
+#   return render(request, 'home.html', {'employee_list': employee_list})
+
 
 class EmployeeDetailView(LoginRequiredMixin, DetailView):
     model = Employee
