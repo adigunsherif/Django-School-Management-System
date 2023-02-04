@@ -20,9 +20,9 @@
       <div class="col-sm-4">
         <div class="row mb-2">
 
-          {% if object.passport %}
+          {% if object.photo %}
             <img
-              src="{{ object.passport.url }}"
+              src="{{ object.photo.url }}"
               class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
           {% else %}
             <img
@@ -32,13 +32,13 @@
 
 
           <div class="float-right">
+            <h4>{{ object.personnel_number }} </h4>
             <h4>{{ object.surname }} </h4>
             <h4>{{ object.firstname }} </h4>
-            <h4>{{ object.other_name }} </h4>
-            <h4>{{ object.registration_number }} </h4>
+            <h4>{{ object.other_name }} </h4>          
           </div>
         </div>
-        <h5>{{ object.current_class }} </h5>
+        <h5>{{ object.current_doc_category }} </h5>
         <h5>{{ object.get_gender_display }} | {{ object.get_current_status_display }}</h5>
 
       </div>
@@ -58,7 +58,7 @@
               Тел номер
             </label>
             <div class="col">
-              {{ object.parent_mobile_number}}
+              {{ object.mobile_number}}
             </div>
           </div>
 

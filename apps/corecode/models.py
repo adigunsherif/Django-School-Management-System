@@ -13,6 +13,30 @@ class SiteConfig(models.Model):
         return self.key
 
 
+class DocumentCategory(models.Model):
+    """DocumentCategory"""
+
+    name = models.CharField(max_length=200, unique=True)
+
+    class Meta:
+        #verbose_name = "Наименование"
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+class Citizenship(models.Model):
+    """Citizenship"""
+
+    name = models.CharField(max_length=200, unique=True)
+
+    class Meta:
+        #verbose_name = "Наименование"
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
 class AcademicSession(models.Model):
     """Academic Session"""
 

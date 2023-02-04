@@ -20,6 +20,14 @@ from .views import (
     TermDeleteView,
     TermListView,
     TermUpdateView,
+    DocumentCategoryCreateView,
+    DocumentCategoryDeleteView,
+    DocumentCategoryListView,
+    DocumentCategoryUpdateView,
+    CitizenshipCreateView,
+    CitizenshipDeleteView,
+    CitizenshipListView,
+    CitizenshipUpdateView,
 )
 
 urlpatterns = [
@@ -60,4 +68,12 @@ urlpatterns = [
         SubjectDeleteView.as_view(),
         name="subject-delete",
     ),
+    path("doccategory/list/", DocumentCategoryListView.as_view(), name="doccategory"),
+    path("doccategory/create/", DocumentCategoryCreateView.as_view(), name="doccategory-create"),
+    path("doccategory/<int:pk>/update/", DocumentCategoryUpdateView.as_view(), name="doccategory-update"),
+    path("doccategory/<int:pk>/delete/", DocumentCategoryDeleteView.as_view(), name="doccategory-delete"),
+    path("citizenship/list/", CitizenshipListView.as_view(), name="citizenship"),
+    path("citizenship/create/", CitizenshipCreateView.as_view(), name="citizenship-create"),
+    path("citizenship/<int:pk>/update/", CitizenshipUpdateView.as_view(), name="citizenship-update"),
+    path("citizenship/<int:pk>/delete/", CitizenshipDeleteView.as_view(), name="citizenship-delete"),
 ]

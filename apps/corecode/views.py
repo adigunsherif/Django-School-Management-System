@@ -14,6 +14,8 @@ from .forms import (
     SiteConfigForm,
     StudentClassForm,
     SubjectForm,
+    DocumentCategoryForm,
+    CitizenshipForm,
 )
 from .models import (
     AcademicSession,
@@ -21,6 +23,8 @@ from .models import (
     SiteConfig,
     StudentClass,
     Subject,
+    DocumentCategory,
+    Citizenship,
 )
 
 
@@ -198,6 +202,85 @@ class ClassDeleteView(LoginRequiredMixin, DeleteView):
         print(obj.name)
         messages.success(self.request, self.success_message.format(obj.name))
         return super(ClassDeleteView, self).delete(request, *args, **kwargs)
+
+
+class DocumentCategoryListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
+    model = DocumentCategory
+    template_name = "corecode/document_cat_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = DocumentCategoryForm()
+        return context
+
+
+class DocumentCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = DocumentCategory
+    form_class = DocumentCategoryForm
+    template_name = "corecode/mgt_form.html"
+    success_url = reverse_lazy("doccategory")
+    success_message = "Новый документ успешно добавлен"
+
+
+class DocumentCategoryUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = DocumentCategory
+    fields = ["name"]
+    success_url = reverse_lazy("doccategory")
+    success_message = "Документ успешно обновлен."
+    template_name = "corecode/mgt_form.html"
+
+
+class DocumentCategoryDeleteView(LoginRequiredMixin, DeleteView):
+    model = DocumentCategory
+    success_url = reverse_lazy("doccategory")
+    template_name = "corecode/core_confirm_delete.html"
+    success_message = "Документ {} был удален со всем прикрепленным к нему содержимым"
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        print(obj.name)
+        messages.success(self.request, self.success_message.format(obj.name))
+        return super(DocumentCategoryDeleteView, self).delete(request, *args, **kwargs)
+
+class CitizenshipListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
+    model = Citizenship
+    template_name = "corecode/citizenship_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = CitizenshipForm()
+        return context
+
+
+class CitizenshipCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Citizenship
+    form_class = CitizenshipForm
+    template_name = "corecode/mgt_form.html"
+    success_url = reverse_lazy("citizenship")
+    success_message = "Новое гражданство успешно добавлено"
+
+
+class CitizenshipUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Citizenship
+    fields = ["name"]
+    success_url = reverse_lazy("citizenship")
+    success_message = "Гражданство успешно обновлено."
+    template_name = "corecode/mgt_form.html"
+
+
+class CitizenshipDeleteView(LoginRequiredMixin, DeleteView):
+    model = Citizenship
+    success_url = reverse_lazy("citizenship")
+    template_name = "corecode/core_confirm_delete.html"
+    success_message = "Гражданство {} был удален со всем прикрепленным к нему содержимым"
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        print(obj.name)
+        messages.success(self.request, self.success_message.format(obj.name))
+        return super(CitizenshipDeleteView, self).delete(request, *args, **kwargs)
+
+
 
 
 class SubjectListView(LoginRequiredMixin, SuccessMessageMixin, ListView):

@@ -7,6 +7,8 @@ from .models import (
     SiteConfig,
     StudentClass,
     Subject,
+    DocumentCategory,
+    Citizenship,
 )
 
 SiteConfigForm = modelformset_factory(
@@ -50,6 +52,19 @@ class StudentClassForm(ModelForm):
         model = StudentClass
         fields = ["name"]
 
+class DocumentCategoryForm(ModelForm):
+    prefix = "DocumentCategory"
+
+    class Meta:
+        model = DocumentCategory
+        fields = ["name"]
+
+class CitizenshipForm(ModelForm):
+    prefix = "Citizenship"
+
+    class Meta:
+        model = Citizenship
+        fields = ["name"]
 
 class CurrentSessionForm(forms.Form):
     current_session = forms.ModelChoiceField(

@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils import timezone
 import hrm_app.settings as sett
 
-from apps.corecode.models import StudentClass
+from apps.corecode.models import DocumentCategory, Citizenship
 
 
 class Employee(models.Model):
@@ -12,38 +12,47 @@ class Employee(models.Model):
 
     GENDER_CHOICES = [("male", "Муж"), ("female", "Жен")]
 
+    #STAFF_CHOICES = [("WhiteCollar", "Белый воротник"), ("BlueCollar", "Синий воротник")]
+
     current_status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default="active", verbose_name="Статус"
     )
-    registration_number = models.CharField(max_length=200, unique=True, verbose_name="Табельный номер")
+    personnel_number = models.CharField(max_length=200, unique=True, verbose_name="Табельный номер")
     surname = models.CharField(max_length=200, verbose_name="Фамилия")
     firstname = models.CharField(max_length=200, verbose_name="Имя")
     other_name = models.CharField(max_length=200, blank=True, verbose_name="Отчество")
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male", verbose_name="Пол")
     date_of_birth = models.DateField(default=timezone.now, verbose_name="Дата рождения")
     position = models.CharField(max_length=200, verbose_name="Должность")
-    current_class = models.ForeignKey(
+    """ current_class = models.ForeignKey(
         StudentClass, on_delete=models.SET_NULL, blank=True, null=True
+    ) """
+    citizenship = models.ForeignKey(
+        Citizenship, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Гражданство"
     )
-    date_of_admission = models.DateField(default=timezone.now, verbose_name="Дата приема")
+
+    current_doc_category = models.ForeignKey(
+        DocumentCategory, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Категория документа"
+    )
+    date_of_employment = models.DateField(default=timezone.now, verbose_name="Дата приема")
 
     mobile_num_regex = RegexValidator(
         regex="^[0-9]{10,15}$", message="Entered mobile number isn't in a right format!"
     )
-    parent_mobile_number = models.CharField(
+    mobile_number = models.CharField(
         validators=[mobile_num_regex], max_length=13, blank=True, verbose_name="Тел номер"
     )
 
-    address = models.TextField(blank=True)
-    others = models.TextField(blank=True)
-    passport = models.ImageField(blank=True, upload_to="employees/passports/", verbose_name="Паспорт")
+    address = models.TextField(blank=True, verbose_name="Адрес в РФ")
+    others = models.TextField(blank=True, verbose_name="Другие")
+    photo = models.ImageField(blank=True, upload_to="employees/photos/", verbose_name="Фото")
 
     class Meta:
         ordering = ["surname", "firstname", "other_name"]
 
     def __str__(self):
         #return f"{self.surname} {self.firstname} {self.other_name} ({self.registration_number})"
-        return "{} {} {} {}".format(self.firstname, self.surname, self.other_name, self.registration_number)
+        return "{} {} {} {}".format(self.firstname, self.surname, self.other_name, self.personnel_number)
 
     def get_absolute_url(self):
         return reverse("employee-detail", kwargs={"pk": self.pk})
