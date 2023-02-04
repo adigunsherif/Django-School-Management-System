@@ -14,8 +14,10 @@ from .forms import (
     SiteConfigForm,
     StudentClassForm,
     SubjectForm,
-    DocumentCategoryForm,
+    PermitDocCategoryForm,
     CitizenshipForm,
+    DocumentTypeForm,
+    DocumentForm,
 )
 from .models import (
     AcademicSession,
@@ -23,8 +25,10 @@ from .models import (
     SiteConfig,
     StudentClass,
     Subject,
-    DocumentCategory,
+    PermitDocCategory,
     Citizenship,
+    DocumentType,
+    Document,
 )
 
 
@@ -204,34 +208,34 @@ class ClassDeleteView(LoginRequiredMixin, DeleteView):
         return super(ClassDeleteView, self).delete(request, *args, **kwargs)
 
 
-class DocumentCategoryListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
-    model = DocumentCategory
-    template_name = "corecode/document_cat_list.html"
+class PermitDocCategoryListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
+    model = PermitDocCategory
+    template_name = "corecode/permit_doc_cat_list.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = DocumentCategoryForm()
+        context["form"] = PermitDocCategoryForm()
         return context
 
 
-class DocumentCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    model = DocumentCategory
-    form_class = DocumentCategoryForm
+class PermitDocCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = PermitDocCategory
+    form_class = PermitDocCategoryForm
     template_name = "corecode/mgt_form.html"
     success_url = reverse_lazy("doccategory")
     success_message = "Новый документ успешно добавлен"
 
 
-class DocumentCategoryUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    model = DocumentCategory
+class PermitDocCategoryUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = PermitDocCategory
     fields = ["name"]
     success_url = reverse_lazy("doccategory")
     success_message = "Документ успешно обновлен."
     template_name = "corecode/mgt_form.html"
 
 
-class DocumentCategoryDeleteView(LoginRequiredMixin, DeleteView):
-    model = DocumentCategory
+class PermitDocCategoryDeleteView(LoginRequiredMixin, DeleteView):
+    model = PermitDocCategory
     success_url = reverse_lazy("doccategory")
     template_name = "corecode/core_confirm_delete.html"
     success_message = "Документ {} был удален со всем прикрепленным к нему содержимым"
@@ -240,7 +244,7 @@ class DocumentCategoryDeleteView(LoginRequiredMixin, DeleteView):
         obj = self.get_object()
         print(obj.name)
         messages.success(self.request, self.success_message.format(obj.name))
-        return super(DocumentCategoryDeleteView, self).delete(request, *args, **kwargs)
+        return super(PermitDocCategoryDeleteView, self).delete(request, *args, **kwargs)
 
 class CitizenshipListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     model = Citizenship
@@ -281,7 +285,81 @@ class CitizenshipDeleteView(LoginRequiredMixin, DeleteView):
         return super(CitizenshipDeleteView, self).delete(request, *args, **kwargs)
 
 
+class DocumentTypeListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
+    model = DocumentType
+    template_name = "corecode/doc_type_list.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = DocumentTypeForm()
+        return context
+
+
+class DocumentTypeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = DocumentType
+    form_class = DocumentTypeForm
+    template_name = "corecode/mgt_form.html"
+    success_url = reverse_lazy("doctype")
+    success_message = "Новый тип документа успешно добавлено"
+
+
+class DocumentTypeUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = DocumentType
+    fields = ["name"]
+    success_url = reverse_lazy("doctype")
+    success_message = "Тип документа успешно обновлено."
+    template_name = "corecode/mgt_form.html"
+
+
+class DocumentTypeDeleteView(LoginRequiredMixin, DeleteView):
+    model = DocumentType
+    success_url = reverse_lazy("doctype")
+    template_name = "corecode/core_confirm_delete.html"
+    success_message = "Тип документа {} был удален со всем прикрепленным к нему содержимым"
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        print(obj.name)
+        messages.success(self.request, self.success_message.format(obj.name))
+        return super(DocumentTypeDeleteView, self).delete(request, *args, **kwargs)
+
+class DocumentListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
+    model = Document
+    template_name = "corecode/document_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = DocumentForm()
+        return context
+
+
+class DocumentCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Document
+    form_class = DocumentForm
+    template_name = "corecode/mgt_form.html"
+    success_url = reverse_lazy("document")
+    success_message = "Новый документ успешно добавлено"
+
+
+class DocumentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Document
+    fields = ["name"]
+    success_url = reverse_lazy("document")
+    success_message = "Документ успешно обновлено."
+    template_name = "corecode/mgt_form.html"
+
+
+class DocumentDeleteView(LoginRequiredMixin, DeleteView):
+    model = Document
+    success_url = reverse_lazy("document")
+    template_name = "corecode/core_confirm_delete.html"
+    success_message = "Документ {} был удален со всем прикрепленным к нему содержимым"
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        print(obj.name)
+        messages.success(self.request, self.success_message.format(obj.name))
+        return super(DocumentDeleteView, self).delete(request, *args, **kwargs)
 
 class SubjectListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     model = Subject

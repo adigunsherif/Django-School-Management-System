@@ -7,8 +7,10 @@ from .models import (
     SiteConfig,
     StudentClass,
     Subject,
-    DocumentCategory,
+    PermitDocCategory,
     Citizenship,
+    DocumentType,
+    Document,
 )
 
 SiteConfigForm = modelformset_factory(
@@ -52,11 +54,11 @@ class StudentClassForm(ModelForm):
         model = StudentClass
         fields = ["name"]
 
-class DocumentCategoryForm(ModelForm):
-    prefix = "DocumentCategory"
+class PermitDocCategoryForm(ModelForm):
+    prefix = "PermitDocCategory"
 
     class Meta:
-        model = DocumentCategory
+        model = PermitDocCategory
         fields = ["name"]
 
 class CitizenshipForm(ModelForm):
@@ -65,6 +67,20 @@ class CitizenshipForm(ModelForm):
     class Meta:
         model = Citizenship
         fields = ["name"]
+
+class DocumentTypeForm(ModelForm):
+    prefix = "DocumentType"
+
+    class Meta:
+        model = DocumentType
+        fields = ["name"]
+
+class DocumentForm(ModelForm):
+    prefix = "Document"
+
+    class Meta:
+        model = Document
+        fields = "__all__"
 
 class CurrentSessionForm(forms.Form):
     current_session = forms.ModelChoiceField(

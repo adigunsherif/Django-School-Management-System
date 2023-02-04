@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils import timezone
 import hrm_app.settings as sett
 
-from apps.corecode.models import DocumentCategory, Citizenship
+from apps.corecode.models import PermitDocCategory, Citizenship
 
 
 class Employee(models.Model):
@@ -32,7 +32,7 @@ class Employee(models.Model):
     )
 
     current_doc_category = models.ForeignKey(
-        DocumentCategory, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Категория документа"
+        PermitDocCategory, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Категория документа"
     )
     date_of_employment = models.DateField(default=timezone.now, verbose_name="Дата приема")
 
