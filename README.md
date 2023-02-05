@@ -1,24 +1,23 @@
 # Django-School-Management-System
 
 This app is meant to be used by school manager to manage their school records:
-student data
-staff
-results and
-finances.
+ - student data
+ - staff
+ - results and
+ - finances.
 
 It currently doesn't allow students/staff to login.
-Solely, it's expected to be used on a single machine or online for managers only.
+
 
 ## Demo
-Visit https://django-school-app.herokuapp.com/ for a live demo. The demo is updated whenever the demo branch code is updated.
+Demo has stopped working on https://django-school-app.herokuapp.com/ since Heroku has stopped their free version.
 ```bash
 username: admin
 password: admin123
 ```
 
 ## Usage
-It's best to install Python projects in a Virtual Environment. Once you have set up a VE, clone this project
-
+Install in a Virtual Environment. Once you have set up a VE, clone this project
 ```bash
 git clone https://github.com/adigunsherif/Django-School-Management-System.git
 ```
