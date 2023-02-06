@@ -3,14 +3,14 @@
 
 
 {% block title %}
-Категории документов
+Разрешение для работы
 {% endblock title %}
 
 
 {% block breadcrumb %}
   <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#modal1">
     <i class="fa fa-plus"></i>
-    Добавить новую категорию документов
+    Добавить новую разрешению для работы
   </a>
 {% endblock breadcrumb %}
   
@@ -24,9 +24,9 @@
             {% for object in object_list %}
             <tr>
               <td>{{ object }}</td>
-              <td><a href="{% url 'doccategory-update' object.id %}"><i
+              <td><a href="{% url 'permitdoccategory-update' object.id %}"><i
                     class="fa fa-edit"></i></a> <a
-                  href="{% url 'doccategory-delete' object.id %}"><i
+                  href="{% url 'permitdoccategory-delete' object.id %}"><i
                     class="fa fa-trash-alt"></i></a></td>
             </tr>
             {% endfor %}
@@ -40,9 +40,9 @@
   <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form action="{% url 'doccategory-create' %}" method="POST">
+        <form action="{% url 'permitdoccategory-create' %}" method="POST">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Добавить новую категорию документов</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Добавить новую разрешению для работы</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

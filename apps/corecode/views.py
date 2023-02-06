@@ -222,21 +222,21 @@ class PermitDocCategoryCreateView(LoginRequiredMixin, SuccessMessageMixin, Creat
     model = PermitDocCategory
     form_class = PermitDocCategoryForm
     template_name = "corecode/mgt_form.html"
-    success_url = reverse_lazy("doccategory")
+    success_url = reverse_lazy("permitdoccategory")
     success_message = "Новый документ успешно добавлен"
 
 
 class PermitDocCategoryUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = PermitDocCategory
     fields = ["name"]
-    success_url = reverse_lazy("doccategory")
+    success_url = reverse_lazy("permitdoccategory")
     success_message = "Документ успешно обновлен."
     template_name = "corecode/mgt_form.html"
 
 
 class PermitDocCategoryDeleteView(LoginRequiredMixin, DeleteView):
     model = PermitDocCategory
-    success_url = reverse_lazy("doccategory")
+    success_url = reverse_lazy("permitdoccategory")
     template_name = "corecode/core_confirm_delete.html"
     success_message = "Документ {} был удален со всем прикрепленным к нему содержимым"
 

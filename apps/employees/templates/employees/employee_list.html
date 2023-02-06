@@ -29,7 +29,7 @@
         {% for employee in employees %}
           <tr class='clickable-row' data-href="{% url 'employee-detail' employee.id %}">
           <!--  <td>{{ forloop.counter}}</td> -->
-            <td>{{ employee.registration_number}}</td>
+            <td>{{ employee.personnel_number}}</td>
             <td>{{ employee.surname}} {{employee.firstname }} {{employee.other_name }}</td>
             <td>{{ employee.position}}</td>
             <td>{{ employee.current_doc_category}}</td>
