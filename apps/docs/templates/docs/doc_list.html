@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Документы{% endblock title %}
+
+{% block breadcrumb %}
+<a class="btn btn-primary" href="{% url 'doc-create' %}"><i
+    class="fas fa-plus"></i> Новый документ</a>
+<a class="btn btn-primary" href="{% url 'doc-upload' %}"><i
+    class="fas fa-upload"></i> Загрузка документов</a>
+{% endblock breadcrumb %}
+
+{% block content %}
+  <div class="table-responsive">
+    <table id="documenttable" class="table table-bordered table-hover" data-page-length='100'>
+      <thead class="thead-light">
+        <tr>
+          <th>Серия/Номер</th>
+          <!-- <th>Табельный номер</th>  -->
+          <th>Дата выдачи</th>
+          <th>Дата окончание</th>
+          <th>Категория документа</th>
+          <!-- <th>Пол</th>
+          <th>Тел номер</th>
+          <th>Статус</th> -->
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for doc in docs %}
+          <tr class='clickable-row' data-href="{% url 'doc-detail' doc.id %}">
+          <!--  <td>{{ forloop.counter}}</td> -->
+            <!-- <td>{{ doc.serial}}</td> -->
+            <td>{{ doc.serial}} {{doc.number }} </td>
+            <td>{{ doc.date_of_issue}}</td>
+            <td>{{ doc.date_of_expiry}}</td>
+            <td>{{ doc.doc_type}</td>
+            <!-- <td>{{ employee.mobile_number}}</td>
+            <td>{{ employee.get_current_status_display}}</td> -->
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $('#documenttable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}
