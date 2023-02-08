@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "__$1ud47e&nyso5h5o3fwnqu4+hfqcply9h$k*h2s34)hn5@nc"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = ["https://web-production-a256.up.railway.app"]
 
@@ -64,6 +64,8 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "apps.corecode.middleware.SiteWideConfigs",    
 ]
+
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = "hrm_app.urls"
 
@@ -169,9 +171,10 @@ else:
         STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media").replace('\\', '/')
 
 MEDIA_URL = "/media/"
+
 
 LOGIN_REDIRECT_URL = "/"
 
