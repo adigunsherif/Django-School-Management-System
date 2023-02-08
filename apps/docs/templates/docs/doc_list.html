@@ -14,13 +14,15 @@
     <table id="documenttable" class="table table-bordered table-hover" data-page-length='100'>
       <thead class="thead-light">
         <tr>
+          <th>Категория документа</th>
+          <th>Сотрудник</th>
           <th>Серия/Номер</th>
           <!-- <th>Табельный номер</th>  -->
           <th>Дата выдачи</th>
           <th>Дата окончание</th>
-          <th>Категория документа</th>
-          <!-- <th>Пол</th>
-          <th>Тел номер</th>
+         
+          
+          <!--<th>Тел номер</th>
           <th>Статус</th> -->
         </tr>
       </thead>
@@ -30,10 +32,12 @@
           <tr class='clickable-row' data-href="{% url 'doc-detail' doc.id %}">
           <!--  <td>{{ forloop.counter}}</td> -->
             <!-- <td>{{ doc.serial}}</td> -->
+            <td>{{ doc.doc_type}}</td>
+            <td>{{ doc.employee}}</td>
             <td>{{ doc.serial}} {{doc.number }} </td>
             <td>{{ doc.date_of_issue}}</td>
             <td>{{ doc.date_of_expiry}}</td>
-            <td>{{ doc.doc_type}</td>
+           
             <!-- <td>{{ employee.mobile_number}}</td>
             <td>{{ employee.get_current_status_display}}</td> -->
           </tr>

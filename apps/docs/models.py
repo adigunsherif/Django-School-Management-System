@@ -19,7 +19,7 @@ class Doc(models.Model):
     )
 
     employee = models.ForeignKey(
-         Employee, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Сотрудник"
+        Employee, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Сотрудник"
     )
 
     doc_type = models.ForeignKey(

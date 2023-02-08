@@ -17,7 +17,6 @@ from .forms import (
     PermitDocCategoryForm,
     CitizenshipForm,
     DocumentTypeForm,
-    DocumentForm,
 )
 from .models import (
     AcademicSession,
@@ -28,7 +27,6 @@ from .models import (
     PermitDocCategory,
     Citizenship,
     DocumentType,
-    Document,
 )
 
 
@@ -323,43 +321,6 @@ class DocumentTypeDeleteView(LoginRequiredMixin, DeleteView):
         messages.success(self.request, self.success_message.format(obj.name))
         return super(DocumentTypeDeleteView, self).delete(request, *args, **kwargs)
 
-class DocumentListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
-    model = Document
-    template_name = "corecode/document_list.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["form"] = DocumentForm()
-        return context
-
-
-class DocumentCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    model = Document
-    form_class = DocumentForm
-    template_name = "corecode/mgt_form.html"
-    success_url = reverse_lazy("document")
-    success_message = "Новый документ успешно добавлено"
-
-
-class DocumentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    model = Document
-    fields = ["name"]
-    success_url = reverse_lazy("document")
-    success_message = "Документ успешно обновлено."
-    template_name = "corecode/mgt_form.html"
-
-
-class DocumentDeleteView(LoginRequiredMixin, DeleteView):
-    model = Document
-    success_url = reverse_lazy("document")
-    template_name = "corecode/core_confirm_delete.html"
-    success_message = "Документ {} был удален со всем прикрепленным к нему содержимым"
-
-    def delete(self, request, *args, **kwargs):
-        obj = self.get_object()
-        print(obj.name)
-        messages.success(self.request, self.success_message.format(obj.name))
-        return super(DocumentDeleteView, self).delete(request, *args, **kwargs)
 
 class SubjectListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     model = Subject

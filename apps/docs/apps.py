@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class EmployeesConfig(AppConfig):
+class DocsConfig(AppConfig):
     name = "apps.docs"
 
     # def ready(self):
-    #     import apps.employees.signals
+    #     import apps.docs.signals

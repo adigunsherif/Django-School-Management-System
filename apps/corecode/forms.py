@@ -10,7 +10,6 @@ from .models import (
     PermitDocCategory,
     Citizenship,
     DocumentType,
-    Document,
 )
 
 SiteConfigForm = modelformset_factory(
@@ -74,13 +73,6 @@ class DocumentTypeForm(ModelForm):
     class Meta:
         model = DocumentType
         fields = ["name"]
-
-class DocumentForm(ModelForm):
-    prefix = "Document"
-
-    class Meta:
-        model = Document
-        fields = "__all__"
 
 class CurrentSessionForm(forms.Form):
     current_session = forms.ModelChoiceField(

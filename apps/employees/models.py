@@ -52,7 +52,7 @@ class Employee(models.Model):
     photo = models.ImageField(blank=True, upload_to="employees/photos/", verbose_name="Фото")
 
     class Meta:
-        ordering = ["surname", "firstname", "other_name"]
+        ordering = ["personnel_number", "surname", "firstname", "other_name"]
 
     def __str__(self):
         #return f"{self.surname} {self.firstname} {self.other_name} ({self.registration_number})"

@@ -32,10 +32,6 @@ from .views import (
     DocumentTypeDeleteView,
     DocumentTypeListView,
     DocumentTypeUpdateView,
-    DocumentCreateView,
-    DocumentDeleteView,
-    DocumentListView,
-    DocumentUpdateView,
 )
 
 urlpatterns = [
@@ -88,8 +84,4 @@ urlpatterns = [
     path("doctype/create/", DocumentTypeCreateView.as_view(), name="doctype-create"),
     path("doctype/<int:pk>/update/", DocumentTypeUpdateView.as_view(), name="doctype-update"),
     path("doctype/<int:pk>/delete/", DocumentTypeDeleteView.as_view(), name="doctype-delete"),
-    path("document/list/", DocumentListView.as_view(), name="document"),
-    path("document/create/", DocumentCreateView.as_view(), name="document-create"),
-    path("document/<int:pk>/update/", DocumentUpdateView.as_view(), name="document-update"),
-    path("document/<int:pk>/delete/", DocumentDeleteView.as_view(), name="document-delete"),
 ]
