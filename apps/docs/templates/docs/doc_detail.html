@@ -3,6 +3,7 @@
 
 {% block content-header %}
 <div class="card-header">
+  <div class="float-left"><h4>{{object}}</h4></div>
   <div class="card-tools">
     <a href="#" class="btn btn-tool">Распечатать</a>
     <a href="{% url 'doc-update' object.id %}" class="btn btn-tool">
@@ -17,20 +18,8 @@
 
 {% block content %}
     <div class="row mb-4">
-      <div class="col-sm-4">
+      <!-- <div class="col-sm-4">
         <div class="row mb-2">
-
-          {% if object.photo %}
-            <img
-              src="{{ object.photo.url }}"
-              class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
-          {% else %}
-            <img
-              src="{% static 'dist/img/avatar.png' %}"
-              class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
-          {% endif %}
-
-
           <div class="float-right">
             <h4>{{ object.doc_type }} </h4>
             <h4>{{ object.serial }} </h4>
@@ -40,18 +29,41 @@
             <div>
               <iframe src="{{ object.scanned_doc.url }}" type="application/pdf" frameborder="0" width="500" height="300"></iframe>
             </div>
-            <!-- <a href={{object.scanned_doc.url}} class= btn btn-primary>download pdf</a>           -->
           </div>
         </div>
-        <!-- <h5>{{ object.current_doc_category }} </h5>
-        <h5>{{ object.get_gender_display }} | {{ object.get_current_status_display }}</h5> -->
-
-      </div>
+      </div> -->
       <div class="col-sm-8">
         <div>
           <div class="form-group border-bottom row">
             <label class="col">
-              Дата рождения
+              Документ
+            </label>
+            <div class="col">
+              {{ object.current_status }}
+            </div>
+          </div>
+
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Серия, номер
+            </label>
+            <div class="col">
+              {{ object.serial }}, {{ object.number }}
+            </div>
+          </div>
+
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Дата выдачи
+            </label>
+            <div class="col">
+              {{ object.date_of_issue }}
+            </div>
+          </div>
+
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Дата окончание
             </label>
             <div class="col">
               {{ object.date_of_expiry }}
@@ -60,27 +72,10 @@
 
           <div class="form-group border-bottom row">
             <label class="col">
-              Тел номер
+              Кем выдан
             </label>
             <div class="col">
-              {{ object.mobile_number}}
-            </div>
-          </div>
-
-          <div class="form-group border-bottom row">
-            <label class="col">
-              Адрес
-            </label>
-            <div class="col">
-              {{ object.address }}
-            </div>
-          </div>
-          <div class="form-group border-bottom row">
-            <label class="col">
-              Комментарий
-            </label>
-            <div class="col">
-              {{ object.others }}
+              {{ object.issued_authority }}
             </div>
           </div>
 
