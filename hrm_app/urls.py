@@ -28,9 +28,9 @@ urlpatterns = [
 #    path("result/", include("apps.result.urls")),
     path("employee/", include("apps.employees.urls")),
     path("doc/", include("apps.docs.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
-if settings.DEBUG is True:
+if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:

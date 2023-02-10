@@ -56,7 +56,7 @@ class Employee(models.Model):
 
     def __str__(self):
         #return f"{self.surname} {self.firstname} {self.other_name} ({self.registration_number})"
-        return "{} {} {} {}".format(self.firstname, self.surname, self.other_name, self.personnel_number)
+        return "{} {} {} ({})".format(self.firstname, self.surname, self.other_name, self.personnel_number)
 
     def get_absolute_url(self):
         return reverse("employee-detail", kwargs={"pk": self.pk})

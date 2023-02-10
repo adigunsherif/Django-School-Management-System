@@ -44,8 +44,9 @@ class Doc(models.Model):
 
     class Meta:
         ordering = ["current_status"]
+
     def __str__(self):
-        return "{}".format(self.current_status)
+        return "{} - {}".format(self.doc_type, self.employee)
 
     def get_absolute_url(self):
         return reverse("doc-detail", kwargs={"pk": self.pk})

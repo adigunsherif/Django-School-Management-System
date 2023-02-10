@@ -43,6 +43,7 @@ class DocListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
 
 class DocDetailView(LoginRequiredMixin, DetailView):
     model = Doc
+    fields = "__all__"
     template_name = "docs/doc_detail.html"
 
     def get_context_data(self, **kwargs):
