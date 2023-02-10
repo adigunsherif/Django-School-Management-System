@@ -22,23 +22,21 @@ from .forms import (
 
 class EmployeeListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     model = Employee
-    template_name = "employees/employee_list.html"
+    # context_object_name = 'employee_list'   # your own name for the list as a template variable
+    template_name = "employees/employee_list.html" # own template name/location
 
     """ def get_context_data(request):
-        #context = super().get_context_data(**kwargs)
-        #context["form"] = EmployeeForm()
+        context = super().get_context_data(**kwargs)
+        context["form"] = EmployeeForm()
         context ={}
         context["employees"] = Employee.objects.all()
         return context """
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(EmployeeListView, self).get_context_data(**kwargs)
+        # context["employees"] = Employee.objects.filter(current_status='active') # Get 5 employees with status 'active'
         context["employees"] = Employee.objects.all()
         return context
-
-#def home(request):
-#   employee_list = Employee.objects.all()
-#   return render(request, 'home.html', {'employee_list': employee_list})
 
 
 class EmployeeDetailView(LoginRequiredMixin, DetailView):

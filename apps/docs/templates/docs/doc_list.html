@@ -16,7 +16,7 @@
         <tr>
           <th>Категория документа</th>
           <th>Сотрудник</th>
-          <th>Серия/Номер</th>
+          <th>Серия, Номер</th>
           <th>Дата выдачи</th>
           <th>Дата окончание</th>
           <!-- <th>Документ</th> -->
@@ -31,8 +31,8 @@
             <td>{{ doc.doc_type }}</td>
             <td>{{ doc.employee }}</td>
             <td>{{ doc.serial }}, {{ doc.number }} </td>
-            <td>{{ doc.date_of_issue }}</td>
-            <td>{{ doc.date_of_expiry }}</td>
+            <td>{{ doc.date_of_issue|date:'d.m.Y' }}</td>
+            <td>{{ doc.date_of_expiry|date:'d.m.Y' }}</td>
             <!-- <td>{{ doc.scanned_doc.url}}</td> -->
           </tr>
         {% endfor %}

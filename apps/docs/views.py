@@ -55,7 +55,7 @@ class DocDetailView(LoginRequiredMixin, DetailView):
 class DocCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Doc
     fields = "__all__"
-    success_message = "Новый сотрудник успешно добавлен."
+    success_message = "Новый сотрудник успешно добавлен"
 
     def get_form(self):
         """add date picker in forms"""
@@ -69,18 +69,15 @@ class DocCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class DocUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Doc
     fields = "__all__"
-    success_message = "Запись успешно обновлена."
+    success_message = "Запись успешно обновлено"
 
     def get_form(self):
         """add date picker in forms"""
         form = super(DocUpdateView, self).get_form()
         form.fields["date_of_issue"].widget = widgets.DateInput(attrs={"type": "date"})
-        form.fields["date_of_expiry"].widget = widgets.DateInput(
-            attrs={"type": "date"}
-        )
+        form.fields["date_of_expiry"].widget = widgets.DateInput(attrs={"type": "date"})
         form.fields["address"].widget = widgets.Textarea(attrs={"rows": 2})
         form.fields["others"].widget = widgets.Textarea(attrs={"rows": 2})
-        form.fields['scanned_doc'].widget = widgets.FileInput()
         return form
 
 

@@ -29,7 +29,7 @@ class Doc(models.Model):
     serial = models.CharField(max_length=200, unique=True, verbose_name="Серия")
     number = models.CharField(max_length=200, verbose_name="Номер №")
 
-    date_of_issue = models.DateField(default=timezone.now, verbose_name="Дата выдачи, С")
+    date_of_issue = models.DateField(default=timezone.now,  verbose_name="Дата выдачи, С")
     date_of_expiry = models.DateField(default=timezone.now, verbose_name="Дата окончание, ДО")
 
     issued_authority = models.CharField(max_length=200, verbose_name="Кем выдан")

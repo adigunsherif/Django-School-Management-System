@@ -8,5 +8,5 @@ admin.site.register(Employee)
 
 admin.site.site_header = "МигрантДок Admin"
 admin.site.site_title = "МигрантДок Admin Portal"
-admin.site.index_title = "Welcome to МигрантДок Portal"
+admin.site.index_title = "Добро пожаловать в МигрантДок"
 

@@ -18,20 +18,7 @@
 
 {% block content %}
     <div class="row mb-4">
-      <!-- <div class="col-sm-4">
-        <div class="row mb-2">
-          <div class="float-right">
-            <h4>{{ object.doc_type }} </h4>
-            <h4>{{ object.serial }} </h4>
-            <h4>{{ object.number }} </h4>
-            <h4>{{ object.date_of_issue }} </h4>
-          
-            <div>
-              <iframe src="{{ object.scanned_doc.url }}" type="application/pdf" frameborder="0" width="500" height="300"></iframe>
-            </div>
-          </div>
-        </div>
-      </div> -->
+
       <div class="col-sm-8">
         <div>
           <div class="form-group border-bottom row">
@@ -39,7 +26,7 @@
               Документ
             </label>
             <div class="col">
-              {{ object.current_status }}
+              {{ object.get_current_status_display }}
             </div>
           </div>
 
@@ -57,7 +44,7 @@
               Дата выдачи
             </label>
             <div class="col">
-              {{ object.date_of_issue }}
+              {{ object.date_of_issue|date:'d.m.Y' }}
             </div>
           </div>
 
@@ -66,7 +53,7 @@
               Дата окончание
             </label>
             <div class="col">
-              {{ object.date_of_expiry }}
+              {{ object.date_of_expiry|date:'d.m.Y' }}
             </div>
           </div>
 
@@ -78,14 +65,25 @@
               {{ object.issued_authority }}
             </div>
           </div>
-
         </div>
+        <div class="form-group border-bottom row">
+          <label class="col">
+            Файл:
+          </label>
+          <div class="col">
+            <p class="file-upload">
+              <a href="{{ object.scanned_doc.url }}">{{ object.scanned_doc.name }}</a>
+            </p>
+          </div>
+        </div>
+
+  </div>
 
       </div>
     </div>
 
-    <h4>Invoice/Payment History</h4>
-    <p>There are no payment history for {{object}}</p>
+    <!-- <h4>Invoice/Payment History</h4>
+    <p>There are no payment history for {{object}}</p> -->
 
 
 
