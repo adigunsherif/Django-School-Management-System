@@ -19,7 +19,6 @@
           <th>Серия, Номер</th>
           <th>Дата выдачи</th>
           <th>Дата окончание</th>
-          <!-- <th>Документ</th> -->
           
         </tr>
       </thead>
@@ -33,7 +32,7 @@
             <td>{{ doc.serial }}, {{ doc.number }} </td>
             <td>{{ doc.date_of_issue|date:'d.m.Y' }}</td>
             <td>{{ doc.date_of_expiry|date:'d.m.Y' }}</td>
-            <!-- <td>{{ doc.scanned_doc.url}}</td> -->
+
           </tr>
         {% endfor %}
 
