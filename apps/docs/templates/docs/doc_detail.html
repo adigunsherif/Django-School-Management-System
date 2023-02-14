@@ -72,7 +72,11 @@
           </label>
           <div class="col">
             <p class="file-upload">
-              <a href="{{ object.scanned_doc.url }}"></a>
+              {% if object.scanned_doc %}
+                <a href="{{ object.scanned_doc.url }}">{{ object.scanned_doc }}</a>
+              {% else %}
+                <a href="{% static 'dist/img/avatar.png' %}"></a>
+              {% endif %}
             </p>
           </div>
         </div>
