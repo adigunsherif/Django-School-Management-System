@@ -26,7 +26,7 @@ class Doc(models.Model):
         DocumentType, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Тип документа"
     )
 
-    serial = models.CharField(max_length=200, unique=True, verbose_name="Серия")
+    serial = models.CharField(max_length=200, verbose_name="Серия") # unique=True, 
     number = models.CharField(max_length=200, verbose_name="Номер №")
 
     date_of_issue = models.DateField(default=timezone.now,  verbose_name="Дата выдачи, С")
