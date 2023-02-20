@@ -149,7 +149,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATE_INPUT_FORMATS = ['d.m.Y']
+DATE_INPUT_FORMATS = ['%d.%m.%Y']
+
+LANGUAGE_CODE = 'ru-RU'
 
 #LOCALE_PATHS = [
 #    BASE_DIR / 'locale/',

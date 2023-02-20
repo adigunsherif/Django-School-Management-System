@@ -60,7 +60,8 @@ class DocCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def get_form(self):
         """add date picker in forms"""
         form = super(DocCreateView, self).get_form()
-        form.fields["date_of_issue"].widget = widgets.DateInput(attrs={"type": "date"})
+        form.fields["date_of_issue"].widget = widgets.DateInput(attrs={"type": "date", "date_format":"%d.%m.%Y"})
+        form.fields["date_of_expiry"].widget = widgets.DateInput(attrs={"type": "date", "date_format":"d.m.Y"})
         form.fields["address"].widget = widgets.Textarea(attrs={"rows": 2})
         form.fields["others"].widget = widgets.Textarea(attrs={"rows": 2})
         return form
