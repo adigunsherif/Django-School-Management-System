@@ -25,8 +25,6 @@ class EmployeeListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     # context_object_name = 'employee_list'   # your own name for the list as a template variable
     template_name = "employees/employee_list.html" # own template name/location
 
-    countemp = Employee.objects.count()
-
     """ def get_context_data(request):
         context = super().get_context_data(**kwargs)
         context["form"] = EmployeeForm()
