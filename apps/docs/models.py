@@ -29,14 +29,11 @@ class Doc(models.Model):
     serial = models.CharField(max_length=200, verbose_name="Серия") # unique=True, 
     number = models.CharField(max_length=200, verbose_name="Номер №")
 
-    date_of_issue = models.DateField(default=timezone.now,  verbose_name="Дата выдачи, С")
-    date_of_expiry = models.DateField(default=timezone.now, verbose_name="Дата окончание, ДО")
+    date_of_issue = models.DateField(default=timezone.now,  verbose_name="Дата выдачи")
+    date_of_preparing = models.DateField(default=timezone.now, verbose_name="Начать оформить до")
+    date_of_expiry = models.DateField(default=timezone.now, verbose_name="Действует до")
 
     issued_authority = models.CharField(max_length=200, verbose_name="Кем выдан")
-
-    citizenship = models.ForeignKey(
-        Citizenship, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Гражданство"
-    )
 
     address = models.TextField(blank=True, verbose_name="Адрес в РФ")
     others = models.TextField(blank=True, verbose_name="Другие")

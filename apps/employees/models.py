@@ -36,6 +36,8 @@ class Employee(models.Model):
     )
     date_of_employment = models.DateField(default=timezone.now, verbose_name="Дата приема")
 
+    date_of_dismissal = models.DateField(verbose_name="Дата увольнение")
+
     tin_number = models.CharField(max_length=200, blank=True, verbose_name="ИНН")
 
     snils_number = models.CharField(max_length=200, blank=True, verbose_name="СНИЛС")
