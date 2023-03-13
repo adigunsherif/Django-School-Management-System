@@ -9,6 +9,9 @@ finances.
 It currently doesn't allow employees/staff to login.
 Solely, it's expected to be used on a single machine or online for managers only.
 
+Multi Tenant schema actively under development.
+
+
 ## Demo
 Visit https://web-production-a256.up.railway.app/ for a live demo. The demo is updated whenever the demo branch code is updated.
 ```bash
