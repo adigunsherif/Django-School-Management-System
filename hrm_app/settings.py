@@ -26,7 +26,7 @@ SECRET_KEY = "__$1ud47e&nyso5h5o3fwnqu4+hfqcply9h$k*h2s34)hn5@nc"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-CSRF_TRUSTED_ORIGINS = ["https://web-production-a256.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://hrm-system-a.vercel.app/"]
 
 ALLOWED_HOSTS = ['*']
 
@@ -97,11 +97,11 @@ WSGI_APPLICATION = "hrm_app.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '4XDAPvWLNCTyZ8Mn0ZiM',
-        'HOST': 'containers-us-west-154.railway.app',
-        'PORT': '7371',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'V6uLS5PkyWXf',
+        'HOST': 'ep-throbbing-thunder-87268949-pooler.us-east-1.postgres.vercel-storage.com',
+#        'PORT': '7371',
     }
 }
 
