@@ -102,6 +102,7 @@ DATABASES = {
         'PASSWORD': 'V6uLS5PkyWXf',
         'HOST': 'ep-throbbing-thunder-87268949-pooler.us-east-1.postgres.vercel-storage.com',
 #        'PORT': '7371',
+
     }
 }
 
