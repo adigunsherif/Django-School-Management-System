@@ -94,17 +94,17 @@ WSGI_APPLICATION = "hrm_app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'verceldb',
-        'USER': 'default',
-        'PASSWORD': 'V6uLS5PkyWXf',
-        'HOST': 'ep-throbbing-thunder-87268949-pooler.us-east-1.postgres.vercel-storage.com',
-#        'PORT': '7371',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'verceldb',
+#         'USER': 'default',
+#         'PASSWORD': 'V6uLS5PkyWXf',
+#         'HOST': 'ep-throbbing-thunder-87268949-pooler.us-east-1.postgres.vercel-storage.com',
+#         'PORT': '7371',
 
-    }
-}
+#     }
+# }
 
 #DATABASES = {
 #    "default": {
