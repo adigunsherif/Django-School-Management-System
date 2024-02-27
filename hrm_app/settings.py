@@ -95,13 +95,13 @@ WSGI_APPLICATION = "hrm_app.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'default_db',
-        'USER': 'gen_user',
-        'PASSWORD': 'UJ8Vj\tY\V|+m4',
-        'HOST': '82.97.255.76',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "default_db",
+        "USER": "gen_user",
+        "PASSWORD": "wrMY8{wv\{!~hf",
+        "HOST": "82.97.254.234",
+        "PORT": "5432",
     }
 }
 
