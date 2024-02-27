@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "__$1ud47e&nyso5h5o3fwnqu4+hfqcply9h$k*h2s34)hn5@nc"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-CSRF_TRUSTED_ORIGINS = ["https://hrm-system-a.vercel.app/"]
+CSRF_TRUSTED_ORIGINS = ["https://shariforz-human-resources-management-system-0cc4.twc1.net/"]
 
 ALLOWED_HOSTS = ['*']
 
