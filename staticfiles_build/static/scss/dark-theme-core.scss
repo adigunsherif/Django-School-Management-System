@@ -1,0 +1,228 @@
+// Default Colors and Mixins...
+$table-border-color: #55779a47;
+$primary-bg-dark: #283149;
+$secondary-bg-dark: #404B69;
+
+
+@mixin darkBackgroundColor() {
+    background-color: #283149;
+    color: #d7d7d7 !important;
+}
+
+@mixin darkItemBackground() {
+    background-color: #404B69 !important;
+}
+
+@mixin regularTextColor() {
+    color: #d7d7d7 !important;
+}
+
+@mixin headingLikeTextColor() {
+    color: #fff !important;
+}
+
+
+body {
+    transition: background-color 200ms ease-in;
+}
+
+body.dark-page {
+    //Overwrite General Colors
+    @include darkBackgroundColor;
+    @include regularTextColor;
+
+    .bg-gray-100 {
+        background-color: transparent !important;
+    }
+
+    .text-body {
+        @include regularTextColor;
+    }
+
+    .text-gradient.text-dark {
+        background-image: linear-gradient(310deg, #a8a8a8, #ffffff);
+    }
+
+
+    //Overwrite Plugin Button
+    .fixed-plugin .fixed-plugin-button {
+        @include darkBackgroundColor;
+    }
+
+    //Main logo text color
+    .sidenav-header {
+        .navbar-brand {
+            @include headingLikeTextColor;
+        }
+    }
+
+    //Overwrite Card Styles
+    .card, .card-header {
+        @include darkItemBackground;
+    }
+
+    //General heading color overwrite
+    h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1, {
+        @include headingLikeTextColor;
+    }
+
+    //General text overwrite
+    .text-dark {
+        @include headingLikeTextColor;
+    }
+
+    //General table styles
+    .table {
+        border-color: $table-border-color;
+    }
+
+    .table > :not(:last-child) > :last-child > * {
+        border-bottom-color: $table-border-color;
+    }
+
+    //Dropdown menus general styling
+    .dropdown-menu {
+        @include darkBackgroundColor;
+
+        &:before {
+            color: $primary-bg-dark !important;
+        }
+
+        a {
+            @include regularTextColor;
+        }
+
+        .dropdown-item:hover, .dropdown-item:focus {
+            background-color: $secondary-bg-dark;
+        }
+    }
+
+    //Search input
+    .input-group {
+        span, input {
+            background-color: rgba(40, 49, 73, 0.6);
+            border-color: rgba(40, 49, 73, 0.8) !important;
+        }
+    }
+
+    //Scrolling nav search box
+    .navbar-main:not(.bg-transparent) {
+        .input-group {
+            span, input {
+                @include darkItemBackground;
+                border-color: $primary-bg-dark;
+            }
+        }
+    }
+
+    //Main navigation links
+    .navbar-main.blur {
+        background-color: rgba($secondary-bg-dark, 0.5) !important;
+        border-color: $primary-bg-dark;
+        box-shadow: none !important;
+
+        .nav-link {
+            @include regularTextColor;
+        }
+
+        .sidenav-toggler-line.bg-dark {
+            background-color: #d7d7d7 !important;
+        }
+    }
+
+    //Side navigation active items
+    .sidenav {
+        .nav-link.active {
+            @include darkItemBackground;
+            @include headingLikeTextColor;
+        }
+    }
+
+    //List items general
+    .list-group-item {
+        background-color: transparent;
+
+        &.bg-gray-100 {
+            background-color: #f8f9fa0a !important;
+        }
+    }
+
+    //Social buttons
+    .btn-simple {
+        &.btn-facebook,
+        &.btn-instagram,
+        &.btn-twitter {
+            @include regularTextColor;
+        }
+    }
+
+    //Pills svg icon
+    svg.text-dark .color-background {
+        fill: #d7d7d7;
+    }
+
+    //Pills navigation
+    .nav.nav-pills .nav-link {
+        @include regularTextColor;
+    }
+
+    //Pills action
+    .moving-tab .nav-link.active {
+        box-shadow: 0 1px 5px 1px #374468e0;
+        background: #283149;
+    }
+
+    //General blur settings
+    .shadow-blur {
+        box-shadow: inset 0 0 2px rgb(254 254 254 / 82%) !important;
+    }
+
+    //Toggle switches
+    .form-switch .form-check-input:checked {
+        border-color: rgb(36 39 57 / 95%);
+        background-color: rgb(36 39 57 / 95%);
+    }
+
+    //Signup/Login pages navigation
+    .navbar.blur-rounded {
+        background-color: rgba($secondary-bg-dark, 0.8) !important;
+
+        .navbar-brand {
+            @include headingLikeTextColor;
+        }
+
+        .navbar-nav .nav-link {
+            @include regularTextColor;
+        }
+    }
+
+    //Input field labels
+    label, .form-label {
+        @include regularTextColor;
+    }
+
+    //Input fields
+    input {
+        background-color: rgba($primary-bg-dark, 0.6);
+        border-color: rgba($secondary-bg-dark, 0.6);
+
+        &.form-control:focus {
+            @include regularTextColor;
+            background-color: rgba($primary-bg-dark, 0.6);
+            border-color: $primary-bg-dark;
+            outline: 0;
+            box-shadow: 0 0 0 2px $primary-bg-dark;
+        }
+    }
+
+    //background of progress bar
+    .progress {
+        background-color: #273047ab !important;
+    }
+
+    //dark button styles{
+    .btn-outline-dark{
+        color: white;
+        border-color: white;
+    }
+}

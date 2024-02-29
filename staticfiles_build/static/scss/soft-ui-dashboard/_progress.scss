@@ -1,0 +1,17 @@
+.progress-bar {
+  height: $progress-bar-height;
+  border-radius: $border-radius;
+  margin-top: -0.095rem;
+  margin-left: -1px;
+}
+
+.progress {
+  overflow: visible;
+
+  &.progress-sm {
+    height: $progress-height-sm;
+  }
+  &.progress-lg {
+    height: $progress-height-lg;
+  }
+}

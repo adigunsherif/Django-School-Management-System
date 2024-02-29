@@ -1,0 +1,133 @@
+body {
+  transition: background-color 200ms ease-in;
+}
+
+body.dark-page {
+  background-color: #283149;
+  color: #d7d7d7 !important;
+  color: #d7d7d7 !important;
+}
+body.dark-page .bg-gray-100 {
+  background-color: transparent !important;
+}
+body.dark-page .text-body {
+  color: #d7d7d7 !important;
+}
+body.dark-page .text-gradient.text-dark {
+  background-image: linear-gradient(310deg, #a8a8a8, #ffffff);
+}
+body.dark-page .fixed-plugin .fixed-plugin-button {
+  background-color: #283149;
+  color: #d7d7d7 !important;
+}
+body.dark-page .sidenav-header .navbar-brand {
+  color: #fff !important;
+}
+body.dark-page .card, body.dark-page .card-header {
+  background-color: #404B69 !important;
+}
+body.dark-page h6, body.dark-page .h6, body.dark-page h5, body.dark-page .h5, body.dark-page h4, body.dark-page .h4, body.dark-page h3, body.dark-page .h3, body.dark-page h2, body.dark-page .h2, body.dark-page h1, body.dark-page .h1 {
+  color: #fff !important;
+}
+body.dark-page .text-dark {
+  color: #fff !important;
+}
+body.dark-page .table {
+  border-color: rgba(85, 119, 154, 0.2784313725);
+}
+body.dark-page .table > :not(:last-child) > :last-child > * {
+  border-bottom-color: rgba(85, 119, 154, 0.2784313725);
+}
+body.dark-page .dropdown-menu {
+  background-color: #283149;
+  color: #d7d7d7 !important;
+}
+body.dark-page .dropdown-menu:before {
+  color: #283149 !important;
+}
+body.dark-page .dropdown-menu a {
+  color: #d7d7d7 !important;
+}
+body.dark-page .dropdown-menu .dropdown-item:hover, body.dark-page .dropdown-menu .dropdown-item:focus {
+  background-color: #404B69;
+}
+body.dark-page .input-group span, body.dark-page .input-group input {
+  background-color: rgba(40, 49, 73, 0.6);
+  border-color: rgba(40, 49, 73, 0.8) !important;
+}
+body.dark-page .navbar-main:not(.bg-transparent) .input-group span, body.dark-page .navbar-main:not(.bg-transparent) .input-group input {
+  background-color: #404B69 !important;
+  border-color: #283149;
+}
+body.dark-page .navbar-main.blur {
+  background-color: rgba(64, 75, 105, 0.5) !important;
+  border-color: #283149;
+  box-shadow: none !important;
+}
+body.dark-page .navbar-main.blur .nav-link {
+  color: #d7d7d7 !important;
+}
+body.dark-page .navbar-main.blur .sidenav-toggler-line.bg-dark {
+  background-color: #d7d7d7 !important;
+}
+body.dark-page .sidenav .nav-link.active {
+  background-color: #404B69 !important;
+  color: #fff !important;
+}
+body.dark-page .list-group-item {
+  background-color: transparent;
+}
+body.dark-page .list-group-item.bg-gray-100 {
+  background-color: rgba(248, 249, 250, 0.0392156863) !important;
+}
+body.dark-page .btn-simple.btn-facebook, body.dark-page .btn-simple.btn-instagram, body.dark-page .btn-simple.btn-twitter {
+  color: #d7d7d7 !important;
+}
+body.dark-page svg.text-dark .color-background {
+  fill: #d7d7d7;
+}
+body.dark-page .nav.nav-pills .nav-link {
+  color: #d7d7d7 !important;
+}
+body.dark-page .moving-tab .nav-link.active {
+  box-shadow: 0 1px 5px 1px rgba(55, 68, 104, 0.8784313725);
+  background: #283149;
+}
+body.dark-page .shadow-blur {
+  box-shadow: inset 0 0 2px rgba(254, 254, 254, 0.82) !important;
+}
+body.dark-page .form-switch .form-check-input:checked {
+  border-color: rgba(36, 39, 57, 0.95);
+  background-color: rgba(36, 39, 57, 0.95);
+}
+body.dark-page .navbar.blur-rounded {
+  background-color: rgba(64, 75, 105, 0.8) !important;
+}
+body.dark-page .navbar.blur-rounded .navbar-brand {
+  color: #fff !important;
+}
+body.dark-page .navbar.blur-rounded .navbar-nav .nav-link {
+  color: #d7d7d7 !important;
+}
+body.dark-page label, body.dark-page .form-label {
+  color: #d7d7d7 !important;
+}
+body.dark-page input {
+  background-color: rgba(40, 49, 73, 0.6);
+  border-color: rgba(64, 75, 105, 0.6);
+}
+body.dark-page input.form-control:focus {
+  color: #d7d7d7 !important;
+  background-color: rgba(40, 49, 73, 0.6);
+  border-color: #283149;
+  outline: 0;
+  box-shadow: 0 0 0 2px #283149;
+}
+body.dark-page .progress {
+  background-color: rgba(39, 48, 71, 0.6705882353) !important;
+}
+body.dark-page .btn-outline-dark {
+  color: white;
+  border-color: white;
+}
+/*# sourceMappingURL=dark-theme-core.css.map */

@@ -26,6 +26,7 @@ urlpatterns = [
 #    path("result/", include("apps.result.urls")),
     path("employee/", include("apps.employees.urls")),
     path("doc/", include("apps.docs.urls")),
+    path('', include('admin_soft.urls')),
 ]
 
 if settings.DEBUG:
