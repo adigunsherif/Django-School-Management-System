@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import widgets
 from django.shortcuts import render
@@ -8,16 +9,16 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .models import Staff
 
 
-class StaffListView(ListView):
+class StaffListView(LoginRequiredMixin, ListView):
     model = Staff
 
 
-class StaffDetailView(DetailView):
+class StaffDetailView(LoginRequiredMixin, DetailView):
     model = Staff
     template_name = "staffs/staff_detail.html"
 
 
-class StaffCreateView(SuccessMessageMixin, CreateView):
+class StaffCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Staff
     fields = "__all__"
     success_message = "New staff successfully added"
@@ -34,7 +35,7 @@ class StaffCreateView(SuccessMessageMixin, CreateView):
         return form
 
 
-class StaffUpdateView(SuccessMessageMixin, UpdateView):
+class StaffUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Staff
     fields = "__all__"
     success_message = "Record successfully updated."
@@ -51,6 +52,6 @@ class StaffUpdateView(SuccessMessageMixin, UpdateView):
         return form
 
 
-class StaffDeleteView(DeleteView):
+class StaffDeleteView(LoginRequiredMixin, DeleteView):
     model = Staff
     success_url = reverse_lazy("staff-list")
